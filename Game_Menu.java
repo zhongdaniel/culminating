@@ -38,17 +38,17 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	}
 			
 	public void keyPressed( KeyEvent e ) {
-				  
-		if(e.getKeyCode() == 27)// 27 is escape
-			Main_Game.cardsL.previous(Main_Game.c);
+			
+			
 	}
 
 	
 	//Action Events
 	public void actionPerformed(ActionEvent e) {
-	    if(e.getSource() == pauseButton) 
-		    Main_Game.cardsL.previous(Main_Game.c);
+		
+		
 	}
+	
 	
 	//Draw Component
 	public void paintComponent(Graphics g){
