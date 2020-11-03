@@ -15,7 +15,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Constructor
 	public Game_Menu(){
 		//Creating the objects
-				//Adding Buttons
 		ImageIcon pause = new ImageIcon("Pause.png");
 		Image pauseImg = pause.getImage();
 		Image sizedImg = pauseImg.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); 
@@ -25,7 +24,8 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		pauseButton.setOpaque(false);
 		pauseButton.setContentAreaFilled(false);
 		pauseButton.setBorderPainted(false);
-
+		
+		
 	    p1Sprite = new ImageIcon("home_background.png");
 	    p2Sprite = new ImageIcon("home_background.png");
 	    projectileSprite = new ImageIcon("home_background.png");
@@ -41,14 +41,16 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		
 		//The Game Loop
 		
-		while (true) {
+		/*
+		 while (true) {
 			
 			//Ending the game
-			if ((p1HP == 0) || p2HP == 0)
+			if ((p1HP == 0) || p2HP == 0) {
 				endGame();
-			
+				break;
+			}
 		}
-
+		 */
 	}
 	
 	// Custom Events
