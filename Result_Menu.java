@@ -5,24 +5,23 @@ import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class Result_Menu extends JPanel implements ActionListener, KeyListener{
-	private JButton goMain;
+	private JButton goHome;
 	private JButton goGame;
 		
 		
 	public Result_Menu() {
-		//Adding Buttons
-		goMain = new JButton(" Return to Main Menu ");
+		//Creating the objects
+		goHome = new JButton(" Return to Main Menu ");
 	    goGame = new JButton("     Play Again     ");
-	        
 	    
 	    //Adding Listeners
-		goMain.addActionListener(this);
+		goHome.addActionListener(this);
 	    goGame.addActionListener(this);
-	    this.setLayout(new FlowLayout());
+	    this.setLayout(null);
 	        
 	    //Adding Objects
 	    this.add(goGame);
-	    this.add(goMain);
+	    this.add(goHome);
 	    this.setBackground(Color.GREEN);
 		
 	}
@@ -38,14 +37,18 @@ public class Result_Menu extends JPanel implements ActionListener, KeyListener{
 					
 	}
 				
-	public void keyPressed( KeyEvent e ) {
+	public void keyPressed(KeyEvent e) {
 				
 				
 	}
 	
 	//Action Events
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if (e.getSource() == goGame) 
+			Main_Game.cardsL.last(Main_Game.c);
+			
+		if (e.getSource() == goHome)
+			Main_Game.cardsL.first(Main_Game.c);
 		
 	}
 	
