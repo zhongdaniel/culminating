@@ -20,7 +20,7 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 		addKeyListener(this);
 		
 		//Adding Objects
-		this.setLayout(new FlowLayout());
+		this.setLayout(null);
 	    this.setBackground(Color.GREEN);
 	    
 	    this.add(goGame);
@@ -33,13 +33,16 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 	    if(e.getSource() == goGame) 
 	    	Main_Game.cardsL.last(Main_Game.c);
 	    
-	    if(e.getSource() == goHome) 
-	    	Main_Game.cardsL.first(Main_Game.c);
+	    if(e.getSource() == goHome) {
+	    Main_Game.cardsL.first(Main_Game.c);
+	    
+	    }
 	}
 	    
 	//Key Events
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+		if(e.getKeyCode() == 13) // 13 is enter
+			Main_Game.cardsL.last(Main_Game.c);
 		
 	}
 
