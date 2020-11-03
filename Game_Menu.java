@@ -15,7 +15,17 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Constructor
 	public Game_Menu(){
 		//Creating the objects
-		pauseButton = new JButton("     Pause     ");
+				//Adding Buttons
+		ImageIcon pause = new ImageIcon("Pause.png");
+		Image pauseImg = pause.getImage();
+		Image sizedImg = pauseImg.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); 
+		pause = new ImageIcon(sizedImg);
+		JButton pauseButton = new JButton(pause);
+		pauseButton.setBounds(1200, 10, 50, 50);
+		pauseButton.setOpaque(false);
+		pauseButton.setContentAreaFilled(false);
+		pauseButton.setBorderPainted(false);
+
 	    p1Sprite = new ImageIcon("home_background.png");
 	    p2Sprite = new ImageIcon("home_background.png");
 	    projectileSprite = new ImageIcon("home_background.png");
