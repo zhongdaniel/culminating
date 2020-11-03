@@ -9,27 +9,64 @@ import java.awt.event.*;
 public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
 	private JButton pauseButton;
+	private static int p1HP, p2HP, p1XPos, p1YPos, p2XPos, p2YPos;
+	private ImageIcon p1Sprite, p2Sprite, projectileSprite;
 	
 	//Constructor
 	public Game_Menu(){
-		//Adding Buttons
+		//Creating the objects
 		pauseButton = new JButton("     Pause     ");
+	    p1Sprite = new ImageIcon("home_background.png");
+	    p2Sprite = new ImageIcon("home_background.png");
+	    projectileSprite = new ImageIcon("home_background.png");
 		
 		//Adding Listeners
 		pauseButton.addActionListener(this);
 		addKeyListener(this);
 		
 		//Adding Objects
-		this.setLayout(new FlowLayout());
+		this.setLayout(null);
 		this.add(pauseButton);
 		this.setBackground(Color.RED);
+		
+		//The Game Loop
+		
+		while (true) {
+			
+			//Ending the game
+			if ((p1HP == 0) || p2HP == 0)
+				endGame();
+			
+		}
 
+	}
+	
+	// Custom Events
+	public static void restartGame() {
+		//Player 1 stats
+		p1HP = 300;
+		p1XPos = 320;
+		p1YPos = 360;
+		
+		//Player 2 stats
+		p2HP = 300;
+		p2XPos = 960;
+		p2YPos = 360;
+	}
+	
+	public void endGame() {
+		restartGame();
+		Main_Game.cardsL.previous(Main_Game.c);
 	}
 	
 	//Key Events
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-				
+		
+		if(e.getKeyCode()== 27) { // 27 is escape
+			Main_Game.cardsL.previous(Main_Game.c);
+			Main_Game.cardsL.previous(Main_Game.c);
+		}
+		
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -46,7 +83,11 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Action Events
 	public void actionPerformed(ActionEvent e) {
 		
-		
+		if (e.getSource() == pauseButton) {
+			Main_Game.cardsL.previous(Main_Game.c);
+			Main_Game.cardsL.previous(Main_Game.c);
+		}
+
 	}
 	
 	
@@ -55,6 +96,9 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    super.paintComponent(g);
 	    g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC, 18));  // set a new font
 	    g.drawString("---Game panel---",200,300);
+	    
+	    g.drawImage(p1Sprite.getImage(), p1XPos, p1YPos, null);
+	    g.drawImage(p2Sprite.getImage(), p2XPos, p2YPos, null);
 	}
 
 	
