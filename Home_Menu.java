@@ -22,18 +22,19 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 		goRules.setFont(new Font("Garamond", Font.BOLD, 16));
 		goRules.setBounds(100, 450, 200, 25);
 		goRules.setBackground(new Color(227, 88, 64));
-		bg = new ImageIcon("home_background.png");
 		
+		bg = new ImageIcon("home_background.png");
+				
 		//Adding Listeners
 		goGame.addActionListener(this);
 		goRules.addActionListener(this);
 		addKeyListener(this);
-		
+				
 		//Adding Objects
-	    this.setLayout(null);
-	    this.add(goGame);
-	    this.setBackground(Color.CYAN);
-		this.add(goRules);
+		this.setLayout(null);
+		this.add(goGame);
+		this.setBackground(Color.CYAN);
+		this.add(goRules);;
 		
 	}
 	    	
@@ -59,19 +60,19 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 			Main_Game.cardsL.next(Main_Game.c); 
 		    	
 		if(e.getSource() == goGame) 
+		    Game_Menu.restartGame();
 			Main_Game.cardsL.last(Main_Game.c);
 	}
 	
 	//Draw Component    
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+		
+		g.setFont(new Font("Garamond", Font.BOLD, 30));
+		g.drawString("Konosuba: The Game", 100, 300);
 			
 			
-			g.setFont(new Font("Garamond", Font.BOLD, 30));
-			g.drawString("Konosuba: The Game", 100, 300);
-			
-			
-		}
+	}
 
 }
