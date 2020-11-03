@@ -14,7 +14,14 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 	public Home_Menu(){
 		//Creating the Objects
 		goGame = new JButton("     Go to game panel     ");
+		goGame.setFont(new Font("Garamond", Font.BOLD, 16));
+		goGame.setBounds(100, 375, 200, 25);
+		goGame.setBackground(new Color(227, 88, 64));
+		
 		goRules = new JButton("     Go to rules panel     ");
+		goRules.setFont(new Font("Garamond", Font.BOLD, 16));
+		goRules.setBounds(100, 450, 200, 25);
+		goRules.setBackground(new Color(227, 88, 64));
 		bg = new ImageIcon("home_background.png");
 		
 		//Adding Listeners
@@ -23,7 +30,7 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 		addKeyListener(this);
 		
 		//Adding Objects
-	    this.setLayout(new FlowLayout());
+	    this.setLayout(null);
 	    this.add(goGame);
 	    this.setBackground(Color.CYAN);
 		this.add(goRules);
@@ -61,8 +68,8 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 			g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
 			
 			
-			g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC, 18));
-			g.drawString("Welcome to ~~Summoner's Rift~~ Konosuba: the ripoff", 100, 200);
+			g.setFont(new Font("Garamond", Font.BOLD, 30));
+			g.drawString("Konosuba: The Game", 100, 300);
 			
 			
 		}
