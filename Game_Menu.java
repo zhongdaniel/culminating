@@ -10,25 +10,26 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
 	private JButton pauseButton;
 	private static int p1HP, p2HP, p1XPos, p1YPos, p2XPos, p2YPos;
-	private ImageIcon p1Sprite, p2Sprite, projectileSprite;
+	private ImageIcon pause, p1Sprite, p2Sprite, projectileSprite;
+	private Image pauseImg, sizedImg;
 	
 	//Constructor
 	public Game_Menu(){
 		//Creating the objects
-		ImageIcon pause = new ImageIcon("Pause.png");
-		Image pauseImg = pause.getImage();
-		Image sizedImg = pauseImg.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); 
+		pause = new ImageIcon("Pause.png");
+		pauseImg = pause.getImage();
+		sizedImg = pauseImg.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); 
 		pause = new ImageIcon(sizedImg);
-		JButton pauseButton = new JButton(pause);
+		
+		pauseButton = new JButton(pause);
 		pauseButton.setBounds(1200, 10, 50, 50);
 		pauseButton.setOpaque(false);
 		pauseButton.setContentAreaFilled(false);
 		pauseButton.setBorderPainted(false);
 		
-		
-	    p1Sprite = new ImageIcon("home_background.png");
-	    p2Sprite = new ImageIcon("home_background.png");
-	    projectileSprite = new ImageIcon("home_background.png");
+	    	p1Sprite = new ImageIcon("home_background.png");
+	    	p2Sprite = new ImageIcon("home_background.png");
+	    	projectileSprite = new ImageIcon("home_background.png");
 		
 		//Adding Listeners
 		pauseButton.addActionListener(this);
