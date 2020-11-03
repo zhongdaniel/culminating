@@ -7,15 +7,27 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
-	private JButton goGame, goHome;
+	private JButton playButton, goHome;
+	private ImageIcon play;
+	private Image playImg, sizedImg;
 		
 	public Pause_Menu(){  // constructor
 		//Creating the Buttons
-		goGame = new JButton("     Resume     ");
+		play = new ImageIcon("Play.png");
+		playImg = play.getImage();
+		sizedImg = playImg.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); 
+		play = new ImageIcon(sizedImg);
+		playButton = new JButton(play);
+		playButton.setBounds(1200, 10, 50, 50);
+		playButton.setOpaque(false);
+		playButton.setContentAreaFilled(false);
+		playButton.setBorderPainted(false);
 		goHome = new JButton("     Quit     ");
+		goHome.setBounds(100, 350, 200, 35);
+		goHome.setBackground(new Color(227, 88, 64));
 		    
 		//Adding Listeners
-		goGame.addActionListener(this);
+		playButton.addActionListener(this);
 		goHome.addActionListener(this);
 		addKeyListener(this);
 		
@@ -23,26 +35,23 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 		this.setLayout(null);
 	    this.setBackground(Color.GREEN);
 	    
-	    this.add(goGame);
+	    this.add(playButton);
 		this.add(goHome);
 	}
 	
 	//Action Events
 	public void actionPerformed(ActionEvent e) {
 	    
-	    if(e.getSource() == goGame) 
+	    if(e.getSource() == playButton) 
 	    	Main_Game.cardsL.last(Main_Game.c);
 	    
-	    if(e.getSource() == goHome) {
-	    Main_Game.cardsL.first(Main_Game.c);
-	    
-	    }
+	    if(e.getSource() == goHome) 
+	    	Main_Game.cardsL.first(Main_Game.c);
 	}
 	    
 	//Key Events
 	public void keyTyped(KeyEvent e) {
-		if(e.getKeyCode() == 13) // 13 is enter
-			Main_Game.cardsL.last(Main_Game.c);
+		// TODO Auto-generated method stub
 		
 	}
 
