@@ -9,28 +9,30 @@ public class Main_Game extends JFrame{
 	static Container c;
 
 	Home_Menu homeP;
-	static Game_Menu gameP;  
+	Game_Menu gameP;  
 	Rules_Menu rulesP;
 	Pause_Menu pauseP;
-	Result_Menu resultP;
+	Results_Menu resultP;
 	
 	//Constructor
 	public Main_Game(){
 		c = getContentPane();
 		cardsL=new CardLayout();
 		c.setLayout(cardsL);
-		   
+
 		homeP = new Home_Menu();
 		gameP = new Game_Menu();
 		pauseP = new Pause_Menu();
 		rulesP = new Rules_Menu();
-		resultP = new Result_Menu();
+		resultP = new Results_Menu();
+		
+		this.addKeyListener(gameP);
 		  
-	    c.add("Konosuba: The Ripoff- Home", homeP);
-	    c.add("Konosuba: The Ripoff- Rules", rulesP);
-	    c.add("Konosuba: The Ripoff- Pause", pauseP);
-	    c.add("Konosuba: The Ripoff- Results", resultP);
-	    c.add("Konosuba: The Ripoff", gameP);
+	    c.add("Home", homeP);
+	    c.add("Rules", rulesP);
+	    c.add("Pause", pauseP);
+	    c.add("Results", resultP);
+	    c.add("Game", gameP);
 	  	    
 	}
 	
@@ -42,7 +44,6 @@ public class Main_Game extends JFrame{
 		f.setResizable(false);
 		f.setSize(1280,720);
 	}
-	
 	
 
 }
