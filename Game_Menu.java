@@ -8,9 +8,10 @@ import java.awt.event.*;
 public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
 	private JButton pauseButton;
-	private static int p1HP, p2HP, p1XPos, p1YPos, p2XPos, p2YPos;
+	private int p1HP, p2HP, p1XPos, p1YPos, p2XPos, p2YPos;
 	private ImageIcon pause, p1Sprite, p2Sprite, projectileSprite;
 	private Image pauseImg, sizedImg;
+	private boolean run;
 	
 	//Constructor
 	public Game_Menu() {
@@ -40,36 +41,54 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		this.add(pauseButton);
 		this.setBackground(Color.RED);
 
-		//The Game Loop
-		
-		/*
-		 while (true) {
-			
-			//Ending the game
-			if ((p1HP == 0) || p2HP == 0) {
-				endGame();
-				break;
-			}
-		}
-		 */
 	}
 	
+	// The Game Loop
+	
+	public void gameLoop() {
+		
+		run = true;
+		
+		while (run) {
+			checkGame();
+			
+		}
+		
+	}
+	
+	
 	// Custom Events
-	public static void restartGame() {
+	public void restartGame() {
 		//Player 1 stats
 		p1HP = 300;
 		p1XPos = 200;
 		p1YPos = 400;
 		
 		//Player 2 stats
-		p2HP = 300;
+		p2HP = 0;
 		p2XPos = 960;
 		p2YPos = 400;
 	}
 	
-	public void endGame() {
-		restartGame();
-		Main_Game.cardsL.show(Main_Game.c, "Results");
+	public void checkGame() {
+		
+		if (p1HP == 0 && p2HP == 0) { //tie
+			restartGame();
+			Main_Game.resultsP.getWinner("Tie Game!");
+			Main_Game.cardsL.show(Main_Game.c, "Results");
+		}
+		
+		else if (p1HP == 0) {
+			restartGame();
+			Main_Game.resultsP.getWinner("Good Game! Player 2 wins!");
+			Main_Game.cardsL.show(Main_Game.c, "Results");
+		}
+		
+		else if (p2HP == 0) {
+			restartGame();
+			Main_Game.resultsP.getWinner("Good Game! Player 1 wins!");
+			Main_Game.cardsL.show(Main_Game.c, "Results");
+		}
 	}
 	
 	public void p1Jump() {
@@ -134,7 +153,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	
 	
 	//Draw Component
-	public void paintComponent(Graphics g){
+	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
 	    g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC, 18));  // set a new font
 	    g.drawString("---Game panel---",200,300);
