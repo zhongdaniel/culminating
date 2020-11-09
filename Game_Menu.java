@@ -43,6 +43,13 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 
 	}
 	
+	try {
+			ImageIcon gif = new ImageIcon("MeguminExplosion.gif");
+		}
+		catch(Exception e){
+			System.out.println("Oh no! There was an issue loadng the gif! However, the game will still run the game!");
+		}
+	
 	// The Game Loop
 	
 	public void gameLoop() {
@@ -160,6 +167,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    
 	    g.drawImage(p1Sprite.getImage(), p1XPos, p1YPos, null);
 	    g.drawImage(p2Sprite.getImage(), p2XPos, p2YPos, null);
+	    g.drawImage(gif.getImage(), 100, 100, null);
 	}
 
 	
