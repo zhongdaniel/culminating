@@ -1,3 +1,4 @@
+  
 import java.awt.*;
 import java.awt.event.*;
 
@@ -9,6 +10,7 @@ public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 	private JButton goHome;
 	private JButton goGame;
 	private ImageIcon bg;
+	private String winner;
 	
 	//Constructor
 	public Results_Menu(){
@@ -29,7 +31,12 @@ public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 		this.add(goHome);
 		
 	}
-	    	
+	 
+	//Custom Events
+	public void getWinner(String winner) {
+		this.winner = winner;
+	}
+	
 	//Key Events
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
@@ -48,7 +55,12 @@ public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 	
 	//Action Events
 	public void actionPerformed(ActionEvent e) {
-
+		
+		if (e.getSource() == goGame) 
+			Main_Game.cardsL.show(Main_Game.c, "Game");
+     
+		if (e.getSource() == goHome) 
+			Main_Game.cardsL.show(Main_Game.c, "Home");
 
 	}
 	
@@ -59,7 +71,7 @@ public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 			
 			
 			g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC, 18));
-			g.drawString("Welcome to ~~Summoner's Rift~~ Konosuba: the ripoff", 540, 360);
+			g.drawString(winner, 540, 360);
 			
 			
 		}
