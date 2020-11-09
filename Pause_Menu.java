@@ -7,7 +7,7 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
-	private JButton playButton, restartButton, goHome;
+	private JButton playButton, goHome, restart;
 	private ImageIcon play;
 	private Image playImg, sizedImg;
   
@@ -28,9 +28,15 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 		goHome.setBounds(100, 350, 200, 35);
 		goHome.setBackground(new Color(227, 88, 64));
 		
+		restart = new JButton("     Restart Game     ");
+		restart.setFont(new Font("Garamond", Font.BOLD, 16));
+		restart.setBounds(100, 400, 200, 35);
+		restart.setBackground(new Color(227, 88, 64));
+		
 		//Adding Listeners
 		playButton.addActionListener(this);
 		goHome.addActionListener(this);
+		restart.addActionListener(this);
 		addKeyListener(this);
 		
 		//Adding Objects
@@ -39,6 +45,7 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 		
 		this.add(playButton);
 		this.add(goHome);
+		this.add(restart);
 	}
  
 	//Action Events
@@ -50,8 +57,8 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 		if (e.getSource() == goHome) 
 			Main_Game.cardsL.show(Main_Game.c, "Home");
      
-		if (e.getSource() == restartButton) {
-			Main_Game.gameP.restartGame();
+		if (e.getSource() == restart) {
+			Game_Menu.restartGame();
 			Main_Game.cardsL.show(Main_Game.c, "Game");
      }
  }
@@ -71,7 +78,7 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 		// TODO Auto-generated method stub
 	 
 	}
- 
+	
 	//Draw Component
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
