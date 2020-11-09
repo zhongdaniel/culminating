@@ -52,7 +52,7 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 		if(e.getKeyCode()==13) { // 13 is enter
 			Main_Game.gameP.setFocusable(true);
 			Main_Game.gameP.requestFocusInWindow();
-			Game_Menu.restartGame();
+			Main_Game.gameP.restartGame();
 			Main_Game.cardsL.show(Main_Game.c, "Game"); 
 	
 		}
@@ -65,7 +65,7 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 			Main_Game.cardsL.show(Main_Game.c, "Rules"); 
 		    	
 		if(e.getSource() == goGame) {
-			Game_Menu.restartGame();
+			Main_Game.gameP.restartGame();
 			Main_Game.gameP.setFocusable(true);
 			Main_Game.gameP.requestFocusInWindow();
 			Main_Game.cardsL.show(Main_Game.c, "Game");
