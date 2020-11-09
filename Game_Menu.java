@@ -57,7 +57,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	// Custom Events
-	public void restartGame() {
+	public static void restartGame() {
 		//Player 1 stats
 		p1HP = 300;
 		p1XPos = 320;
