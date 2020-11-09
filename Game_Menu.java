@@ -21,16 +21,17 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		sizedImg = pauseImg.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); 
 		pause = new ImageIcon(sizedImg);
 		
+		p1Sprite = new ImageIcon("Megumin_Sprite.png");
+		p2Sprite = new ImageIcon("Megumin_Sprite.png");
+	    projectileSprite = new ImageIcon("home_background.png");
+		
 		pauseButton = new JButton(pause);
 		pauseButton.setBounds(1200, 10, 50, 50);
 		pauseButton.setOpaque(false);
 		pauseButton.setContentAreaFilled(false);
 		pauseButton.setBorderPainted(false);
 		
-	    	p1Sprite = new ImageIcon("home_background.png");
-	    	p2Sprite = new ImageIcon("home_background.png");
-	    	projectileSprite = new ImageIcon("home_background.png");
-		
+
 		//Adding Listeners
 		pauseButton.addActionListener(this);
 		addKeyListener(this);
@@ -56,7 +57,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	}
 	
 	// Custom Events
-	public static void restartGame() {
+	public void restartGame() {
 		//Player 1 stats
 		p1HP = 300;
 		p1XPos = 320;
