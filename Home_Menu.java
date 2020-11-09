@@ -13,7 +13,7 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 	//Constructor
 	public Home_Menu(){
 		//Creating the Objects
-		goGame = new JButton("     Go to rules panel     ");
+		goGame = new JButton("     Go to game panel     ");
 		goGame.setFont(new Font("Garamond", Font.BOLD, 16));
 		goGame.setBounds(100, 350, 200, 35);
 		goGame.setBackground(new Color(227, 88, 64));
@@ -52,7 +52,8 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 		if(e.getKeyCode()==13) { // 13 is enter
 			Main_Game.gameP.setFocusable(true);
 			Main_Game.gameP.requestFocusInWindow();
-			Main_Game.cardsL.last(Main_Game.c); //Game Frame
+			Main_Game.gameP.restartGame();
+			Main_Game.cardsL.show(Main_Game.c, "Game"); 
 	
 		}
 	}
@@ -61,10 +62,12 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent e) {
 
 		if(e.getSource() == goRules) 
-			Main_Game.cardsL.next(Main_Game.c); 
+			Main_Game.cardsL.show(Main_Game.c, "Rules"); 
 		    	
-		if(e.getSource() == goGame) 
-			Main_Game.cardsL.last(Main_Game.c);
+		if(e.getSource() == goGame) {
+			Main_Game.gameP.restartGame();
+			Main_Game.cardsL.show(Main_Game.c, "Game");
+		}
 	}
 	
 	//Draw Component    
