@@ -13,7 +13,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	private Image pauseImg, sizedImg;
 	
 	//Constructor
-	public Game_Menu(){
+	public Game_Menu() {
 		//Creating the objects
 		pause = new ImageIcon("Pause.png");
 		pauseImg = pause.getImage();
@@ -30,7 +30,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		pauseButton.setContentAreaFilled(false);
 		pauseButton.setBorderPainted(false);
 		
-
 		//Adding Listeners
 		pauseButton.addActionListener(this);
 		addKeyListener(this);
@@ -40,7 +39,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		this.setLayout(null);
 		this.add(pauseButton);
 		this.setBackground(Color.RED);
-		
+
 		//The Game Loop
 		
 		/*
@@ -59,49 +58,78 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	public static void restartGame() {
 		//Player 1 stats
 		p1HP = 300;
-		p1XPos = 320;
-		p1YPos = 360;
+		p1XPos = 200;
+		p1YPos = 400;
 		
 		//Player 2 stats
 		p2HP = 300;
 		p2XPos = 960;
-		p2YPos = 360;
+		p2YPos = 400;
 	}
 	
 	public void endGame() {
 		restartGame();
-		Main_Game.cardsL.previous(Main_Game.c);
+		Main_Game.cardsL.show(Main_Game.c, "Results");
+	}
+	
+	public void p1Jump() {
+		
+	}
+	
+	public void p2Jump() {
+		
 	}
 	
 	//Key Events
 	public void keyTyped(KeyEvent e) {
-		System.out.println("Escape");
-		if(e.getKeyCode()== 27) { // 27 is escape
-			Main_Game.cardsL.previous(Main_Game.c);
-			Main_Game.cardsL.previous(Main_Game.c);
-		}
+		
 		
 	}
 
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
+		
+		//P1 Jump and Attacks
+		if (e.getKeyCode() == 87) //W
+			p1Jump();
+		
+		
+		//P2 Jump and Attacks
+		if (e.getKeyCode() == 73) //I
+			p2Jump();
 				
 	}
 			
 	public void keyPressed( KeyEvent e ) {
-			
-			
+		System.out.println("Escape");
+		
+		if (e.getKeyCode() == 27) // 27 is escape
+			Main_Game.cardsL.show(Main_Game.c, "Pause");
+		
+		//P1 X Movement
+		while (e.getKeyCode() == 65) //A
+			p1XPos --;
+		
+		while (e.getKeyCode() == 68) //D
+			p1XPos ++;
+		
+		
+		//P2 X Movement
+		while (e.getKeyCode() == 74) //J
+			p1XPos --;
+				
+		while (e.getKeyCode() == 76) //L
+			p1XPos ++;
+		
 	}
 
 	
 	//Action Events
 	public void actionPerformed(ActionEvent e) {
 		
-		if (e.getSource() == pauseButton) {
-			Main_Game.cardsL.previous(Main_Game.c);
-			Main_Game.cardsL.previous(Main_Game.c);
-		}
-
+		if (e.getSource() == pauseButton) 
+			Main_Game.cardsL.show(Main_Game.c, "Pause");
+		
 	}
 	
 	
