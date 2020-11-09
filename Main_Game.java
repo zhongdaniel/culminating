@@ -11,7 +11,7 @@ public class Main_Game extends JFrame{
 	static Game_Menu gameP;  
 	Rules_Menu rulesP;
 	Pause_Menu pauseP;
-	Results_Menu resultP;
+	static Results_Menu resultsP;
 	
 	//Constructor
 	public Main_Game(){
@@ -23,14 +23,14 @@ public class Main_Game extends JFrame{
 		gameP = new Game_Menu();
 		pauseP = new Pause_Menu();
 		rulesP = new Rules_Menu();
-		resultP = new Results_Menu();
+		resultsP = new Results_Menu();
 		
 		this.addKeyListener(gameP);
 		  
 	    c.add("Home", homeP);
 	    c.add("Rules", rulesP);
 	    c.add("Pause", pauseP);
-	    c.add("Results", resultP);
+	    c.add("Results", resultsP);
 	    c.add("Game", gameP);
 	  	    
 	}
