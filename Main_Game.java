@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import javax.swing.*;
 
@@ -9,7 +8,7 @@ public class Main_Game extends JFrame{
 	static Container c;
 
 	Home_Menu homeP;
-	Game_Menu gameP;  
+	static Game_Menu gameP;  
 	Rules_Menu rulesP;
 	Pause_Menu pauseP;
 	Results_Menu resultP;
@@ -47,6 +46,3 @@ public class Main_Game extends JFrame{
 	
 
 }
-
-
-
