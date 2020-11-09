@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -18,11 +17,11 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		//Creating the objects
 		pause = new ImageIcon("Pause.png");
 		pauseImg = pause.getImage();
-		sizedImg = pauseImg.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH); 
+		sizedImg = pauseImg.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
 		pause = new ImageIcon(sizedImg);
 		
-		p1Sprite = new ImageIcon("Megumin_Sprite.png");
-		p2Sprite = new ImageIcon("Megumin_Sprite.png");
+		p1Sprite = new ImageIcon("MeguminSprite.png");
+		p2Sprite = new ImageIcon("WizSprite.png");
 	    projectileSprite = new ImageIcon("home_background.png");
 		
 		pauseButton = new JButton(pause);
