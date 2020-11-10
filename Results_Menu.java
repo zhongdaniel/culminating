@@ -57,6 +57,7 @@ public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if (e.getSource() == goGame) 
+			Main_Game.restartGameBool = true;
 			Main_Game.cardsL.show(Main_Game.c, "Game");
      
 		if (e.getSource() == goHome) 
