@@ -58,7 +58,7 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 			Main_Game.cardsL.show(Main_Game.c, "Home");
      
 		if (e.getSource() == restart) {
-			Game_Menu.restartGame();
+			Main_Game.restartGameBool = true;
 			Main_Game.cardsL.show(Main_Game.c, "Game");
      }
  }
