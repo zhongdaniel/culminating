@@ -12,7 +12,8 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	private ImageIcon pause, p1Sprite, p2Sprite, projectileSprite, gif;
 	private Image pauseImg, sizedImg;
 	private Timer myTimer;
-	private boolean aPressed, dPressed, jPressed, lPressed; // Keys in order are A, D, J, L
+	private boolean aPressed, dPressed, jPressed, lPressed;
+	private Rectangle p1Hitbox, p2Hitbox;
 	
 	//Constructor
 	public Game_Menu() {
@@ -69,12 +70,12 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		
 		//Player 1 stats
 		p1HP = 300;
-		p1XPos = 200;
+		p1XPos = 285;
 		p1YPos = 400;
 		
 		//Player 2 stats
 		p2HP = 300;
-		p2XPos = 960;
+		p2XPos = 935;
 		p2YPos = 400;
 	}
 	
@@ -184,6 +185,10 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			if (Main_Game.restartGameBool)
 				restartGame();
 			
+			//Player Hitboxes
+			p1Hitbox = new Rectangle(p1XPos, p1YPos, 75, 120);
+			p2Hitbox = new Rectangle(p2XPos, p2YPos, 75, 120);
+			
 			//Player 1 X Movement
 			if(aPressed)
 				p1XPos -= 10;
@@ -202,13 +207,13 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			if (p1XPos < 0)
 				p1XPos += 10;
 			
-			if (p1XPos > 1180)
+			if (p1XPos >= 1205)
 				p1XPos -= 10;
 			
 			if (p2XPos < 0)
 				p2XPos += 10;
 			
-			if (p2XPos > 1180)
+			if (p2XPos > 1205)
 				p2XPos -= 10;
 			
 			//Check Game State
