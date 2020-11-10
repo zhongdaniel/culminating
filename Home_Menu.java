@@ -27,15 +27,18 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 		//Adding Listeners
 		goGame.addActionListener(this);
 		goRules.addActionListener(this);
-		addKeyListener(Main_Game.gameP);
-		goGame.addKeyListener(Main_Game.gameP);
-		goRules.addKeyListener(Main_Game.gameP);
+		addKeyListener(this);
+		goGame.addKeyListener(this);
+		goRules.addKeyListener(this);
 		
 		//Adding Objects
 	    this.setLayout(null);
 	    this.add(goGame);
 	    this.setBackground(Color.CYAN);
 		this.add(goRules);
+		
+		//Resetting the game
+		Main_Game.restartGameBool = true;
 		
 	}
 	    	
@@ -50,9 +53,6 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 				
 	public void keyPressed( KeyEvent e ) {
 		if(e.getKeyCode()==13) { // 13 is enter
-			Main_Game.gameP.setFocusable(true);
-			Main_Game.gameP.requestFocusInWindow();
-			Main_Game.gameP.restartGame();
 			Main_Game.cardsL.show(Main_Game.c, "Game"); 
 	
 		}
@@ -65,9 +65,6 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 			Main_Game.cardsL.show(Main_Game.c, "Rules"); 
 		    	
 		if(e.getSource() == goGame) {
-			Main_Game.gameP.restartGame();
-			Main_Game.gameP.setFocusable(true);
-			Main_Game.gameP.requestFocusInWindow();
 			Main_Game.cardsL.show(Main_Game.c, "Game");
 		}
 	}
