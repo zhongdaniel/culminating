@@ -8,11 +8,11 @@ import java.awt.event.*;
 public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
 	private JButton pauseButton;
-	private int p1HP, p2HP, p1XPos, p1YPos, p2XPos, p2YPos, p1JumpStrength, p2JumpStrength, p1ProjectileXPos, p1ProjectileYPos;
+	private int p1HP, p2HP, p1XPos, p1YPos, p2XPos, p2YPos, p1JumpStrength, p2JumpStrength, p1ProjectileXPos, p1ProjectileYPos, p2ProjectileXPos, p2ProjectileYPos;
 	private ImageIcon pause, p1Sprite, p2Sprite, projectileSpriteRight, projectileSpriteLeft, gif;
 	private Image pauseImg, sizedImg;
 	private Timer myTimer;
-	private boolean aPressed, dPressed, jPressed, lPressed, p1Jumping, p2Jumping, p1IsShooting, p1ShootingLeft, p1ShootingRight;
+	private boolean aPressed, dPressed, jPressed, lPressed, p1Jumping, p2Jumping, p1IsShooting, p1ShootingLeft, p1ShootingRight, p2IsShooting, p2ShootingLeft, p2ShootingRight;
 	private Rectangle p1Hitbox, p2Hitbox;
 	
 	//Constructor
@@ -152,15 +152,21 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		} 
 			
 			
-		//P2 Jump and Attacks
+		//P2 Jump 
 		if (e.getKeyCode() == 73) //I
 					
 			if (!p2Jumping) {
 				p2JumpStrength = 7;
 				p2Jumping = true;
 			}
-				
-	}
+		
+		//P2 Attack
+			if (e.getKeyCode() == 85) { //U
+				p2ProjectileXPos = p2XPos;
+				p2ProjectileYPos = p2YPos + 47;
+				p2IsShooting = true;	
+			}
+	}	
 		
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -312,6 +318,24 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 				}
 				
 			}
+			
+			if (p2IsShooting) {
+				
+				//P1 on left, P2 on right
+				if (p1XPos >= p2XPos) {
+					p2ProjectileXPos += 50;
+					p2ShootingRight = true;
+					p2ShootingLeft = false;
+				}
+				
+				//P2 on left, P1 on right
+				if (p1XPos < p2XPos) {
+					p2ProjectileXPos -= 50;
+					p2ShootingLeft = true;
+					p2ShootingRight = false;
+				}
+				
+			}
 			//Check Game State
 			checkGame();
 			
@@ -333,6 +357,12 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    
 	    if (p1ShootingLeft)
 	    	g.drawImage(projectileSpriteLeft.getImage(), p1ProjectileXPos, p1ProjectileYPos, null);
+	    
+	    if (p2ShootingRight)
+	    	g.drawImage(projectileSpriteRight.getImage(), p2ProjectileXPos, p2ProjectileYPos, null);
+	    
+	    if (p2ShootingLeft)
+	    	g.drawImage(projectileSpriteLeft.getImage(), p2ProjectileXPos, p2ProjectileYPos, null);
 	    
 	    g.drawImage(p1Sprite.getImage(), p1XPos, p1YPos, null);
 	    g.drawImage(p2Sprite.getImage(), p2XPos, p2YPos, null);
