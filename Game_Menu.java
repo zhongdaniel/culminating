@@ -8,11 +8,11 @@ import java.awt.event.*;
 public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
 	private JButton pauseButton;
-	private int p1HP, p2HP, p1XPos, p1YPos, p2XPos, p2YPos, p1JumpStrength, p2JumpStrength;
-	private ImageIcon pause, p1Sprite, p2Sprite, projectileSprite, gif;
+	private int p1HP, p2HP, p1XPos, p1YPos, p2XPos, p2YPos, p1JumpStrength, p2JumpStrength, p1ProjectileXPos, p1ProjectileYPos;
+	private ImageIcon pause, p1Sprite, p2Sprite, projectileSpriteRight, projectileSpriteLeft, gif;
 	private Image pauseImg, sizedImg;
 	private Timer myTimer;
-	private boolean aPressed, dPressed, jPressed, lPressed, p1Jumping, p2Jumping;
+	private boolean aPressed, dPressed, jPressed, lPressed, p1Jumping, p2Jumping, p1IsShooting, p1ShootingLeft, p1ShootingRight;
 	private Rectangle p1Hitbox, p2Hitbox;
 	
 	//Constructor
@@ -27,7 +27,8 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		
 		p1Sprite = new ImageIcon("MeguminSprite.png");
 		p2Sprite = new ImageIcon("WizSprite.png");
-	    projectileSprite = new ImageIcon("home_background.png");
+	    projectileSpriteRight = new ImageIcon("AquaSpriteRight.png");
+	    projectileSpriteLeft = new ImageIcon("AquaSpriteLeft.png");
 	    try {
 			gif = new ImageIcon("MeguminExplosion.gif");
 		}
@@ -129,14 +130,28 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode() == 76) //L
 			lPressed = true;
 		
-		//P1 Jump and Attacks
+		//P1 Jump
 		if (e.getKeyCode() == 87) //W
 					
 			if (!p1Jumping) {
 				p1JumpStrength = 7;
 				p1Jumping = true;
 			}
-				
+		
+		//P1 Attack
+		if (e.getKeyCode() == 81) { //Q
+			p1ProjectileXPos = p1XPos;
+			p1ProjectileYPos = p1YPos + 47;
+			p1IsShooting = true;
+			
+		}
+		
+		//P1 Special
+		if (e.getKeyCode() == 69) { //E
+			
+		} 
+			
+			
 		//P2 Jump and Attacks
 		if (e.getKeyCode() == 73) //I
 					
@@ -278,6 +293,25 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 				
 			}
 			
+			//Shooting
+			
+			if (p1IsShooting) {
+				
+				//P1 on left, P2 on right
+				if (p1XPos <= p2XPos) {
+					p1ProjectileXPos += 50;
+					p1ShootingRight = true;
+					p1ShootingLeft = false;
+				}
+				
+				//P2 on left, P1 on right
+				if (p1XPos > p2XPos) {
+					p1ProjectileXPos -= 50;
+					p1ShootingLeft = true;
+					p1ShootingRight = false;
+				}
+				
+			}
 			//Check Game State
 			checkGame();
 			
@@ -292,6 +326,13 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    super.paintComponent(g);
 	    g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC, 18));  // set a new font
 	    g.drawString("---Game panel---",200,300);
+	    
+	    //Bullets
+	    if (p1ShootingRight)
+	    	g.drawImage(projectileSpriteRight.getImage(), p1ProjectileXPos, p1ProjectileYPos, null);
+	    
+	    if (p1ShootingLeft)
+	    	g.drawImage(projectileSpriteLeft.getImage(), p1ProjectileXPos, p1ProjectileYPos, null);
 	    
 	    g.drawImage(p1Sprite.getImage(), p1XPos, p1YPos, null);
 	    g.drawImage(p2Sprite.getImage(), p2XPos, p2YPos, null);
