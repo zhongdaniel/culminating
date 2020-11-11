@@ -243,7 +243,9 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 					p2Jumping = false;
 				
 			}
-			//Adding Borders
+			//Adding Collision
+			
+			//Borders
 			if (p1XPos < 0)
 				p1XPos += 10;
 			
@@ -255,6 +257,26 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			
 			if (p2XPos > 1205)
 				p2XPos -= 10;
+			
+			//Characters
+			if (p1Hitbox.intersects(p2Hitbox)) {
+				
+				//P1 on left, P2 on right
+				if (p1XPos <= p2XPos) {
+					p1XPos -= 10;
+					p2XPos += 10;
+					
+				}
+				
+				//P2 on left, P1 on right
+				if (p1XPos > p2XPos) {
+					p1XPos += 10;
+					p2XPos -= 10;
+					
+				}
+				
+				
+			}
 			
 			//Check Game State
 			checkGame();
