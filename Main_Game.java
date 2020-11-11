@@ -13,11 +13,14 @@ public class Main_Game extends JFrame{
 	Pause_Menu pauseP;
 	static Results_Menu resultsP;
 	
+	static boolean restartGameBool;
+	
 	//Constructor
 	public Main_Game(){
 		c = getContentPane();
 		cardsL=new CardLayout();
 		c.setLayout(cardsL);
+		restartGameBool = true;
 
 		homeP = new Home_Menu();
 		gameP = new Game_Menu();
@@ -25,7 +28,6 @@ public class Main_Game extends JFrame{
 		rulesP = new Rules_Menu();
 		resultsP = new Results_Menu();
 		
-		this.addKeyListener(gameP);
 		  
 	    c.add("Home", homeP);
 	    c.add("Rules", rulesP);
