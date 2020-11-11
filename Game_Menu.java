@@ -13,7 +13,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	private Image pauseImg, sizedImg;
 	private Timer myTimer;
 	private boolean aPressed, dPressed, jPressed, lPressed, p1Jumping, p2Jumping, p1IsShooting, p1ShootingLeft, p1ShootingRight, p2IsShooting, p2ShootingLeft, p2ShootingRight;
-	private Rectangle p1Hitbox, p2Hitbox;
+	private Rectangle p1Hitbox, p2Hitbox, p1ProjectileHitbox, p2ProjectileHitbox;
 	
 	//Constructor
 	public Game_Menu() {
@@ -196,19 +196,30 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		
-		if (e.getSource() == pauseButton) 
+		if (e.getSource() == pauseButton) {
 			Main_Game.cardsL.show(Main_Game.c, "Pause");
-		
+			aPressed = false;
+			dPressed = false;
+			jPressed = false;
+			lPressed = false;
+		}
 		//Game Loop
 		if (e.getSource() == myTimer ) {
 			
-			//Checking for game end
-			if (Main_Game.restartGameBool)
-				restartGame();
+			//Requesting Pause Button Focus
+			pauseButton.requestFocus();
 			
-			//Player Hitboxes
+			//Checking for game end
+			if (Main_Game.restartGameBool) 
+				restartGame();
+
+			
+			//Hitboxes
 			p1Hitbox = new Rectangle(p1XPos, p1YPos, 75, 120);
 			p2Hitbox = new Rectangle(p2XPos, p2YPos, 75, 120);
+			
+			p1ProjectileHitbox = new Rectangle(p1ProjectileXPos, p1ProjectileYPos, 50, 25);
+			p2ProjectileHitbox = new Rectangle(p2ProjectileXPos, p2ProjectileYPos, 50, 25);
 			
 			//Player 1 Movement
 			if (aPressed)
@@ -298,6 +309,13 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 				
 				
 			}
+			
+			//Taking Damage
+			if (p1Hitbox.intersects(p2ProjectileHitbox))
+				p1HP -= 100;
+			
+			if (p2Hitbox.intersects(p1ProjectileHitbox))
+				p2HP -= 100;
 			
 			//Shooting
 			
