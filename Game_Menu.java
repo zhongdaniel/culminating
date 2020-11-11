@@ -8,11 +8,11 @@ import java.awt.event.*;
 public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
 	private JButton pauseButton;
-	private int p1HP, p2HP, p1XPos, p1YPos, p2XPos, p2YPos;
+	private int p1HP, p2HP, p1XPos, p1YPos, p2XPos, p2YPos, p1JumpStrength, p2JumpStrength;
 	private ImageIcon pause, p1Sprite, p2Sprite, projectileSprite, gif;
 	private Image pauseImg, sizedImg;
 	private Timer myTimer;
-	private boolean aPressed, dPressed, jPressed, lPressed;
+	private boolean aPressed, dPressed, jPressed, lPressed, p1Jumping, p2Jumping;
 	private Rectangle p1Hitbox, p2Hitbox;
 	
 	//Constructor
@@ -100,14 +100,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		}
 	}
 	
-	public void p1Jump() {
-		
-	}
-	
-	public void p2Jump() {
-		
-	}
-	
 	
 	//Key Events
 	@Override
@@ -137,20 +129,28 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		if (e.getKeyCode() == 76) //L
 			lPressed = true;
 		
+		//P1 Jump and Attacks
+		if (e.getKeyCode() == 87) //W
+					
+			if (!p1Jumping) {
+				p1JumpStrength = 7;
+				p1Jumping = true;
+			}
+				
+		//P2 Jump and Attacks
+		if (e.getKeyCode() == 73) //I
+					
+			if (!p2Jumping) {
+				p2JumpStrength = 7;
+				p2Jumping = true;
+			}
+				
 	}
 		
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
-		//P1 Jump and Attacks
-		if (e.getKeyCode() == 87) //W
-			p1Jump();
-		
-		
-		//P2 Jump and Attacks
-		if (e.getKeyCode() == 73) //I
-			p2Jump();
 		
 		//P1 Movement
 		if (e.getKeyCode() == 65) //A
@@ -189,20 +189,60 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			p1Hitbox = new Rectangle(p1XPos, p1YPos, 75, 120);
 			p2Hitbox = new Rectangle(p2XPos, p2YPos, 75, 120);
 			
-			//Player 1 X Movement
-			if(aPressed)
+			//Player 1 Movement
+			if (aPressed)
 				p1XPos -= 10;
 			
-			if(dPressed)
+			if (dPressed)
 				p1XPos += 10;
 			
+			if (p1Jumping) {
+				
+				//Exponential Jump
+				if (p1JumpStrength > 0) {
+					p1YPos -= Math.pow(2.0, p1JumpStrength);
+				}
+					
+				if (p1JumpStrength < 0) {
+					p1YPos += Math.pow(2.0, -p1JumpStrength);
+				}
+				
+				//Changing the jump Strength
+				p1JumpStrength --;
+				
+				//Stopping the Jump
+				if (p1JumpStrength < -7)
+					p1Jumping = false;
+				
+			}
+			
 			//Player 2 X Movement
-			if(jPressed)
+			if (jPressed)
 				p2XPos -= 10;
 			
-			if(lPressed)
+			if (lPressed)
 				p2XPos += 10;
 			
+			
+			if (p2Jumping) {
+				
+				//Exponential Jump
+				if (p2JumpStrength > 0) {
+					p2YPos -= Math.pow(2.0, p2JumpStrength);
+				}
+					
+				if (p2JumpStrength < 0) {
+					p2YPos += Math.pow(2.0, -p2JumpStrength);
+				}
+				
+				//Changing the jump Strength
+				p2JumpStrength --;
+				
+				//Stopping the Jump
+				if (p2JumpStrength < -7)
+					p2Jumping = false;
+				
+			}
 			//Adding Borders
 			if (p1XPos < 0)
 				p1XPos += 10;
