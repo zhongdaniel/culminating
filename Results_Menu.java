@@ -9,7 +9,7 @@ public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
 	private Color buttonColour;
 	private JButton againButton, backButton;
-	private ImageIcon bg, playAgain, back, p1, p2;
+	private ImageIcon bg, playAgain, back, p1, p2, winImg, loseImg;
 	private Image againImg, sizedAgain, backImg, sizedBack;
 	private int winner;
 	
@@ -41,6 +41,8 @@ public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 		bg = new ImageIcon("home_background.png");
 		p1 = new ImageIcon("WizSprite.png");
 		p2 = new ImageIcon("MeguminSprite.png");
+		winImg = new ImageIcon("Winner.png");
+		loseImg = new ImageIcon("Loser.png");
 		
 		buttonColour = new Color(255, 255, 255, 100);
 		
@@ -93,18 +95,21 @@ public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 	//Draw Component    
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
-			g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+			g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null); //Add Background
+			
+			g.drawImage(winImg.getImage(), 275, 140, 200, 47, null); //Add Winner Text
+			g.drawImage(loseImg.getImage(), 905, 300, 80, 25, null); //Add Loser Text
 			
 			if(winner == 0) {
-				g.drawImage(p1.getImage(), 300, 100, 112, 180, null);
+				g.drawImage(p1.getImage(), 300, 200, 112, 180, null);
 				g.drawImage(p2.getImage(), 450, 100, 112, 180, null);
 			}
 			else if(winner == 1) {
-				g.drawImage(p1.getImage(), 300, 100, 112, 180, null);
+				g.drawImage(p1.getImage(), 300, 200, 112, 180, null);
 				g.drawImage(p2.getImage(), 920, 320, 50, 90, null);
 			}
 			else if(winner == 2) {
-				g.drawImage(p2.getImage(), 300, 100, 112, 180, null);
+				g.drawImage(p2.getImage(), 300, 200, 112, 180, null);
 				g.drawImage(p1.getImage(), 920, 320, 50, 90, null);
 			}
 			
