@@ -24,19 +24,19 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	public Game_Menu() {
 		//Variable Assignment
 		p1Projectile1XPos = 200;
-		p1Projectile1YPos = 100;
-		p2Projectile1XPos = 1000;
-		p2Projectile1YPos = 100;
-		p1Projectile2XPos = 200;
-		p1Projectile2YPos = 70;
-		p2Projectile2XPos = 1000;
-		p2Projectile2YPos = 70;
-		p1Projectile3XPos = 200;
-		p1Projectile3YPos = 40;
-		p2Projectile3XPos = 1000;
-		p2Projectile3YPos = 40;
-		p1ShootingRight = true;
-		p2ShootingLeft = true;
+        p1Projectile1YPos = 650;
+        p2Projectile1XPos = 1000;
+        p2Projectile1YPos = 650;
+        p1Projectile2XPos = 200;
+        p1Projectile2YPos = 620;
+        p2Projectile2XPos = 1000;
+        p2Projectile2YPos = 620;
+        p1Projectile3XPos = 200;
+        p1Projectile3YPos = 590;
+        p2Projectile3XPos = 1000;
+        p2Projectile3YPos = 590;
+        p1ShootingRight = true;
+        p2ShootingLeft = true;
 
 		
 		//Creating the objects
@@ -478,13 +478,13 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 						
 			
 				if (p2Projectile1Used) 
-					p2Projectile1XPos -= 50;
+					p2Projectile1XPos += 50;
 				
 				if (p2Projectile2Used) 
-					p2Projectile2XPos -= 50;
+					p2Projectile2XPos += 50;
 						
 				if (p2Projectile3Used) 
-					p2Projectile3XPos -= 50;	
+					p2Projectile3XPos += 50;	
 			}
 			
 			
@@ -492,36 +492,36 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			
 			if (p1Projectile1XPos <= 0 || p1Projectile1XPos >= 1280) {
 				p1Projectile1XPos = 200;
-				p1Projectile1YPos = 100;
+				p1Projectile1YPos = 650;
 				p1Projectile1Used = false;
 			}
 			
 			if (p1Projectile2XPos <= 0 || p1Projectile2XPos >= 1280) {
 				p1Projectile2XPos = 200;
-				p1Projectile2YPos = 70;
+				p1Projectile2YPos = 650;
 				p1Projectile2Used = false;
 			}
 
 			if (p1Projectile3XPos <= 0 || p1Projectile3XPos >= 1280) {
 				p1Projectile3XPos = 200;
-				p1Projectile3YPos = 40;
+				p1Projectile3YPos = 620;
 				p1Projectile3Used = false;
 			}
 			
 			if (p2Projectile1XPos <= 0 || p2Projectile1XPos >= 1280) {
-				p2Projectile1XPos = 200;
-				p2Projectile1YPos = 100;
+				p2Projectile1XPos = 1000;
+				p2Projectile1YPos = 620;
 				p2Projectile1Used = false;
 			}
 			
 			if (p2Projectile2XPos <= 0 || p2Projectile2XPos >= 1280) {
-				p2Projectile2XPos = 200;
-				p2Projectile2YPos = 70;
+				p2Projectile2XPos = 1000;
+				p2Projectile2YPos = 590;
 				p2Projectile2Used = false;
 			}
 			if (p2Projectile3XPos <= 0 || p2Projectile3XPos >= 1280) {
 				p2Projectile3XPos = 1000;
-				p2Projectile3YPos = 40;
+				p2Projectile3YPos = 590;
 				p2Projectile3Used = false;
 				
 			}
