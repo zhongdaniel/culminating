@@ -7,32 +7,33 @@ import javax.swing.*;
 public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
 	private JButton backButton;
-	private ImageIcon bg, back, header1;
+	private ImageIcon bg, back, header;
 	private Image backImg, sizedBack;
-	private Color bgColour;
+	private Color bgColour, buttonColour;
 	
 	public Rules_Menu(){  // constructor
 		//Creating the Back Button
 		back = new ImageIcon("Back_Button.png");
 		backImg = back.getImage();
-		sizedBack = backImg.getScaledInstance(150, 40, java.awt.Image.SCALE_SMOOTH); 
+		sizedBack = backImg.getScaledInstance(170, 40, java.awt.Image.SCALE_SMOOTH); 
 		back = new ImageIcon(sizedBack);
 		backButton = new JButton(back);
-		backButton.setBounds(100, 600, 150, 40);
+		backButton.setBounds(100, 537, 170, 40);
 		backButton.setOpaque(false);
 		backButton.setContentAreaFilled(false);
 		backButton.setBorderPainted(false);
   
 		//Adding Background
 		bg = new ImageIcon("Rules_Background.png");
-		header1 = new ImageIcon("Instructions.png");
+		header = new ImageIcon("Instructions.png");
   
 		//Adding Listeners
 		backButton.addActionListener(this);
 		addKeyListener(this);
 		
-		//Adding box background colour
+		//Setting colour presets
 		bgColour = new Color(88, 88, 88, 200);
+		buttonColour = new Color(255, 255, 255, 200);
   
 		//Adding Objects
 		this.setLayout(null);
@@ -76,9 +77,12 @@ public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
 		g.setColor(bgColour);
 		g.fillRoundRect(80, 120, 300, 110, 30, 30);
 		g.fillRoundRect(720, 120, 300, 110, 30, 30);
-		g.fillRoundRect(80, 270, 1050, 190, 30, 30);
+		g.fillRoundRect(80, 270, 1050, 210, 30, 30);
 		
-		g.drawImage(header1.getImage(), 90, 40, 400, 70, null);
+		g.setColor(buttonColour);
+		g.fillRoundRect(90, 525, 200, 60, 30, 30);
+		
+		g.drawImage(header.getImage(), 90, 40, 400, 70, null);
     
 		g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC,  18));
 		g.setColor(java.awt.Color.white);
@@ -103,9 +107,10 @@ public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
   		g.drawString("In this 1-on-1 PvP game, you can face off with your opponents through either Megumin, or Wiz!",100,340);
   		g.drawString("You will be able to shoot Aqua Projectiles, up to 3 at a time. Your ammo will be displayed on the bottom of the screen.",100,360);
   		g.drawString("Your ammo will automatically reload once your Aqua Projectiles either hit an opponent or is out of sight.",100,380);
-  		g.drawString("Also, no need to worry about running out, as your projectiles will keep reloading until the round ends!",100,400);
-  		g.drawString("Each player has 300 health, and each projectile does 15 damage.",100,420);
-  		g.drawString("Have fun playing!",100,440);
+  		g.drawString("Also, no need to worry about running out or aiming, as your projectiles will keep reloading until the round ends, and ",100,400);
+  		g.drawString("auto-shoots to whichever side of you the enemy is on", 100, 420);
+  		g.drawString("Each player has 300 health, and each projectile does 15 damage.",100,440);
+  		g.drawString("Have fun playing!",100,460);
  
  }
  
