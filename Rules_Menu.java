@@ -77,16 +77,19 @@ public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
 		g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC,  18));
 		g.setColor(java.awt.Color.white);
   
-  
+		//Shows Player 1 Keys
 		g.drawString("Instructions:",100,200);  
 		g.drawString("Player 1 Controls:",100,225);   
-		g.drawString("Move Left - A",100,250);  
-		g.drawString("Move Right - D",100,275);   
-		g.drawString("Attack - Q",100,300);   
-		g.drawString("Player 2 Controls:",740,225);   
-  		g.drawString("Move Left - J",740,250);   
-  		g.drawString("Move Right - L",740,250);   
-  		g.drawString("Attack - U",740,300);   
+		g.drawString("Jump - W",100,250);   
+		g.drawString("Move Left - A",100,275);  
+		g.drawString("Move Right - D",100,300);   
+		g.drawString("Attack - Q",100,325);   
+		//Shows Player 2 Keys
+		g.drawString("Player 2 Controls:",740,225);  
+		g.drawString("Jump - I",740,250);  
+  		g.drawString("Move Left - J",740,275);   
+  		g.drawString("Move Right - L",740,300);   
+  		g.drawString("Attack - U",740,325);   
  
  }
  
