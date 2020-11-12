@@ -7,10 +7,11 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
+	private Color buttonColour;
 	private JButton againButton, backButton;
-	private ImageIcon bg, playAgain, back;
+	private ImageIcon bg, playAgain, back, p1, p2;
 	private Image againImg, sizedAgain, backImg, sizedBack;
-	private String winner;
+	private int winner;
 	
 	//Constructor
 	public Results_Menu(){
@@ -21,7 +22,7 @@ public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 		playAgain = new ImageIcon(sizedAgain);
 		
 		againButton = new JButton(playAgain);
-		againButton.setBounds(100, 400, 250, 50);
+		againButton.setBounds(100, 390, 260, 60);
 		againButton.setOpaque(false);
 		againButton.setContentAreaFilled(false);
 		againButton.setBorderPainted(false);
@@ -32,12 +33,16 @@ public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 		back = new ImageIcon(sizedBack);
 		
 		backButton = new JButton(back);
-		backButton.setBounds(100, 450, 500, 50);
+		backButton.setBounds(100, 460, 520, 60);
 		backButton.setOpaque(false);
 		backButton.setContentAreaFilled(false);
 		backButton.setBorderPainted(false);
 		
 		bg = new ImageIcon("home_background.png");
+		p1 = new ImageIcon("WizSprite.png");
+		p2 = new ImageIcon("MeguminSprite.png");
+		
+		buttonColour = new Color(255, 255, 255, 100);
 		
 		//Adding Listeners
 		againButton.addActionListener(this);
@@ -53,7 +58,7 @@ public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 	}
 	 
 	//Custom Events
-	public void getWinner(String winner) {
+	public void getWinner(int winner) {
 		this.winner = winner;
 	}
 	
@@ -90,11 +95,22 @@ public class Results_Menu extends JPanel implements ActionListener, KeyListener{
 			super.paintComponent(g);
 			g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
 			
+			if(winner == 0) {
+				g.drawImage(p1.getImage(), 300, 100, 112, 180, null);
+				g.drawImage(p2.getImage(), 450, 100, 112, 180, null);
+			}
+			else if(winner == 1) {
+				g.drawImage(p1.getImage(), 300, 100, 112, 180, null);
+				g.drawImage(p2.getImage(), 920, 320, 50, 90, null);
+			}
+			else if(winner == 2) {
+				g.drawImage(p2.getImage(), 300, 100, 112, 180, null);
+				g.drawImage(p1.getImage(), 920, 320, 50, 90, null);
+			}
 			
-			g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC, 18));
-			g.drawString(winner, 540, 360);
-			
-			
+			g.setColor(buttonColour);
+			g.fillRoundRect(100, 390, 260, 55, 10, 10);
+			g.fillRoundRect(100, 460, 520, 60, 10, 10);
 		}
 
 }
