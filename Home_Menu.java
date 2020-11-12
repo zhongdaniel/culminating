@@ -8,7 +8,7 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
 	private JButton goGame;
 	private JButton goRules;
-	private ImageIcon bg, game, rules, header;
+	private ImageIcon bg, game, rules;
 	private Image gameImg, sizedImg, rulesImg, sizeRules;
 	
 	//Constructor
@@ -38,7 +38,6 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 		goRules.setBorderPainted(false);
 		
 		bg = new ImageIcon("home_background.png");
-		header = new ImageIcon("Header.png");
 		
 		//Adding Listeners
 		goGame.addActionListener(this);
@@ -53,9 +52,6 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 	    this.setBackground(Color.CYAN);
 		this.add(goRules);
 		
-		//Resetting the game
-		Main_Game.restartGameBool = true;
-		
 	}
 	    	
 	//Key Events
@@ -68,7 +64,7 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 	}
 				
 	public void keyPressed( KeyEvent e ) {
-		if(e.getKeyCode()==13) { // 13 is enter
+		if(e.getKeyCode() == 13) { // 13 is enter
 			Main_Game.cardsL.show(Main_Game.c, "Game"); 
 	
 		}
@@ -81,6 +77,7 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 			Main_Game.cardsL.show(Main_Game.c, "Rules"); 
 		    	
 		if(e.getSource() == goGame) {
+			Main_Game.restartGameBool = true;
 			Main_Game.cardsL.show(Main_Game.c, "Game");
 		}
 	}
@@ -89,10 +86,10 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
-			g.drawImage(header.getImage(), 100, 200, 600, 80, null);
 			
 			
 			g.setFont(new Font("Garamond", Font.BOLD, 30));
+			g.drawString("Konosuba: The Game", 100, 300);
 			
 			
 		}
