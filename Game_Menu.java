@@ -12,7 +12,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	private int p1Projectile1XPos, p1Projectile1YPos, p2Projectile1XPos, p2Projectile1YPos;
 	private int p1Projectile2XPos, p1Projectile2YPos, p2Projectile2XPos, p2Projectile2YPos;
 	private int p1Projectile3XPos, p1Projectile3YPos, p2Projectile3XPos, p2Projectile3YPos;
-	private ImageIcon pause, p1Sprite, p2Sprite, projectileSpriteRight, projectileSpriteLeft;
+	private ImageIcon pause, p1Sprite, p2Sprite, projectileSpriteRight, projectileSpriteLeft, hp1, hp2;
 	private Image pauseImg, sizedImg;
 	private Timer myTimer;
 	private boolean aPressed, dPressed, jPressed, lPressed, p1Jumping, p2Jumping;
@@ -49,6 +49,10 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		
 		p1Sprite = new ImageIcon("MeguminSprite.png");
 		p2Sprite = new ImageIcon("WizSprite.png");
+		
+		hp1 = new ImageIcon("P1hp.png");
+		hp2 = new ImageIcon("P2hp.png");
+		
 	    projectileSpriteRight = new ImageIcon("AquaSpriteRight.png");
 	    projectileSpriteLeft = new ImageIcon("AquaSpriteLeft.png");
 	    
@@ -57,6 +61,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		pauseButton.setOpaque(false);
 		pauseButton.setContentAreaFilled(false);
 		pauseButton.setBorderPainted(false);
+	  
 		
 		//Adding Listeners
 
@@ -417,6 +422,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 				p1Projectile3YPos = 40;
 			}
 			
+			
 			//Shooting
 			
 				
@@ -533,8 +539,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Draw Component
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
-	    g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC, 18));  // set a new font
-	    g.drawString("---Game panel---",200,300);
 	    
 	    //Bullets
 	    if (p1ShootingRight) {
@@ -561,14 +565,19 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    	g.drawImage(projectileSpriteLeft.getImage(), p2Projectile1XPos, p2Projectile1YPos, null);
 	    	g.drawImage(projectileSpriteLeft.getImage(), p2Projectile2XPos, p2Projectile2YPos, null);
 	    	g.drawImage(projectileSpriteLeft.getImage(), p2Projectile3XPos, p2Projectile3YPos, null);
-	    }	   
+	    }	
+	    
 	    //Characters
 	    g.drawImage(p1Sprite.getImage(), p1XPos, p1YPos, null);
 	    g.drawImage(p2Sprite.getImage(), p2XPos, p2YPos, null);
 	    
-
+	    //HP Bar
+	    g.drawImage(hp1.getImage(), 10, 550, 200, 40, null);
+	    g.drawImage(hp2.getImage(), 1050, 550, 200, 40, null);
+	    
+	    g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC, 18));
+	    g.drawString(p1HP + "", 10, 650);
+	    g.drawString(p2HP + "", 1050, 650);
 	    
 	}
-
-	
 }
