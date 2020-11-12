@@ -12,7 +12,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	private int p1Projectile1XPos, p1Projectile1YPos, p2Projectile1XPos, p2Projectile1YPos;
 	private int p1Projectile2XPos, p1Projectile2YPos, p2Projectile2XPos, p2Projectile2YPos;
 	private int p1Projectile3XPos, p1Projectile3YPos, p2Projectile3XPos, p2Projectile3YPos;
-	private ImageIcon pause, p1Sprite, p2Sprite, projectileSpriteRight, projectileSpriteLeft, hp1, hp2;
+	private ImageIcon gameBg, pause, p1Sprite, p2Sprite, projectileSpriteRight, projectileSpriteLeft, hp1, hp2;
 	private Image pauseImg, sizedImg;
 	private Timer myTimer;
 	private boolean aPressed, dPressed, jPressed, lPressed, p1Jumping, p2Jumping;
@@ -62,7 +62,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		pauseButton.setContentAreaFilled(false);
 		pauseButton.setBorderPainted(false);
 	  
-		
+		gameBg = new ImageIcon("gameBg.jpg");
 		//Adding Listeners
 
 		pauseButton.addActionListener(this);
@@ -109,19 +109,19 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		
 		if (p1HP == 0 && p2HP == 0) { //tie
 			Main_Game.restartGameBool = true;
-			Main_Game.resultsP.getWinner("Tie Game!");
+			Main_Game.resultsP.getWinner(0);
 			Main_Game.cardsL.show(Main_Game.c, "Results");
 		}
 		
 		else if (p1HP == 0) {
 			Main_Game.restartGameBool = true;
-			Main_Game.resultsP.getWinner("Good Game! Player 2 wins!");
+			Main_Game.resultsP.getWinner(1);
 			Main_Game.cardsL.show(Main_Game.c, "Results");
 		}
 		
 		else if (p2HP == 0) {
 			Main_Game.restartGameBool = true;
-			Main_Game.resultsP.getWinner("Good Game! Player 1 wins!");
+			Main_Game.resultsP.getWinner(2);
 			Main_Game.cardsL.show(Main_Game.c, "Results");
 		}
 	}
@@ -528,6 +528,8 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Draw Component
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
+	    
+	    g.drawImage(gameBg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
 	    
 	    //Bullets
 	    if (p1ShootingRight) {
