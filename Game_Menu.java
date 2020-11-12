@@ -7,12 +7,13 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
+	private Color boxColour;
 	private JButton pauseButton;
 	private int p1HP, p2HP, p1XPos, p1YPos, p2XPos, p2YPos, p1JumpStrength, p2JumpStrength;
 	private int p1Projectile1XPos, p1Projectile1YPos, p2Projectile1XPos, p2Projectile1YPos;
 	private int p1Projectile2XPos, p1Projectile2YPos, p2Projectile2XPos, p2Projectile2YPos;
 	private int p1Projectile3XPos, p1Projectile3YPos, p2Projectile3XPos, p2Projectile3YPos;
-	private ImageIcon gameBg, pause, p1Sprite, p2Sprite, projectileSpriteRight, projectileSpriteLeft, hp1, hp2;
+	private ImageIcon gameBg, pause, p1Sprite, p2Sprite, projectileSpriteRight, projectileSpriteLeft, hp1, hp2, gif;
 	private Image pauseImg, sizedImg;
 	private Timer myTimer;
 	private boolean aPressed, dPressed, jPressed, lPressed, p1Jumping, p2Jumping;
@@ -62,7 +63,8 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		pauseButton.setContentAreaFilled(false);
 		pauseButton.setBorderPainted(false);
 	  
-		gameBg = new ImageIcon("gameBg.jpg");
+		gameBg = new ImageIcon("gameBg.png");
+		boxColour = new Color(229, 146, 168, 200);
 		//Adding Listeners
 
 		pauseButton.addActionListener(this);
@@ -76,11 +78,11 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		this.setLayout(null);
 		
 		this.add(pauseButton);
-		this.setBackground(Color.RED);
+		this.setBackground(Color.white);
 		
 		myTimer.start();
 		
-	    
+
 	}
 	
 	
@@ -531,6 +533,10 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    
 	    g.drawImage(gameBg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
 	    
+	    g.setColor(boxColour);
+	    g.fillRoundRect(0, 530, 300, 170, 30, 30);
+	    g.fillRoundRect(980, 530, 300, 170, 30, 30);
+	    
 	    //Bullets
 	    if (p1ShootingRight) {
 	    	g.drawImage(projectileSpriteRight.getImage(), p1Projectile1XPos, p1Projectile1YPos, null);
@@ -566,9 +572,10 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    g.drawImage(hp1.getImage(), 10, 550, 200, 40, null);
 	    g.drawImage(hp2.getImage(), 1050, 550, 200, 40, null);
 	    
-	    g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC, 18));
-	    g.drawString(p1HP + "", 10, 650);
-	    g.drawString(p2HP + "", 1050, 650);
+	    g.setColor(java.awt.Color.black);
+	    g.setFont(new Font("Arial", Font.BOLD, 50));
+	    g.drawString(p1HP + "", 30, 650);
+	    g.drawString(p2HP + "", 1100, 650);
 	    
 	}
 }
