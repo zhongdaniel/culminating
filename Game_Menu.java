@@ -17,6 +17,14 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	
 	//Constructor
 	public Game_Menu() {
+		//Variable Assignment
+		p1ProjectileXPos = 200;
+		p1ProjectileYPos = 200;
+		p2ProjectileXPos = 1000;
+		p2ProjectileYPos = 200;
+		p1ShootingRight = true;
+		p2ShootingLeft = true;
+		
 		//Creating the objects
 		pause = new ImageIcon("Pause.png");
 		pauseImg = pause.getImage();
@@ -45,7 +53,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		//Adding Listeners
 
 		pauseButton.addActionListener(this);
-		
 		this.addKeyListener(this);
 		pauseButton.setFocusable(true);
 		pauseButton.requestFocus();
@@ -68,6 +75,11 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	public void restartGame() {
 		
 		Main_Game.restartGameBool = false;
+		
+		aPressed = false;
+		dPressed = false;
+		jPressed = false;
+		lPressed = false;
 		
 		//Player 1 stats
 		p1HP = 300;
@@ -139,7 +151,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			}
 		
 		//P1 Attack
-		if (e.getKeyCode() == 81) { //Q
+		if (e.getKeyCode() == 81 && !p1IsShooting) { //Q
 			p1ProjectileXPos = p1XPos;
 			p1ProjectileYPos = p1YPos + 47;
 			p1IsShooting = true;
@@ -161,7 +173,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			}
 		
 		//P2 Attack
-			if (e.getKeyCode() == 85) { //U
+			if (e.getKeyCode() == 85 && !p2IsShooting) { //U
 				p2ProjectileXPos = p2XPos;
 				p2ProjectileYPos = p2YPos + 47;
 				p2IsShooting = true;	
@@ -307,18 +319,29 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 					
 				}
 				
-				
 			}
 			
 			//Taking Damage
-			if (p1Hitbox.intersects(p2ProjectileHitbox))
-				p1HP -= 100;
+		
+			if (p1Hitbox.intersects(p2ProjectileHitbox)) {
+				p1HP -= 15;
+				p2IsShooting = false;
+				System.out.println(p1HP);
+				p2ProjectileXPos = 1000;
+				p2ProjectileYPos = 200;
+
+			}
+				
+			if (p2Hitbox.intersects(p1ProjectileHitbox)) {
+				p2HP -= 15;
+				p1IsShooting = false;
+				System.out.println(p2HP);
+				p1ProjectileXPos = 200;
+				p1ProjectileYPos = 200;
+			}
 			
-			if (p2Hitbox.intersects(p1ProjectileHitbox))
-				p2HP -= 100;
 			
 			//Shooting
-			
 			if (p1IsShooting) {
 				
 				//P1 on left, P2 on right
@@ -354,6 +377,21 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 				}
 				
 			}
+			
+			//Reloading upon missing
+			
+			if (p1ProjectileXPos <= 0 || p1ProjectileXPos >= 1280) {
+				p1ProjectileXPos = 200;
+				p1ProjectileYPos = 200;
+				p1IsShooting = false;
+			}
+			
+			if (p2ProjectileXPos <= 0 || p2ProjectileXPos >= 1280) {
+				p2ProjectileXPos = 200;
+				p2ProjectileYPos = 200;
+				p2IsShooting = false;
+				
+			}
 			//Check Game State
 			checkGame();
 			
@@ -381,10 +419,15 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    
 	    if (p2ShootingLeft)
 	    	g.drawImage(projectileSpriteLeft.getImage(), p2ProjectileXPos, p2ProjectileYPos, null);
-	    
+	    	   
+	    //Characters
 	    g.drawImage(p1Sprite.getImage(), p1XPos, p1YPos, null);
 	    g.drawImage(p2Sprite.getImage(), p2XPos, p2YPos, null);
-	    g.drawImage(gif.getImage(), 100, 100, null);
+	    
+	    //Collision Effects
+	    if(p2Hitbox.intersects(p1ProjectileHitbox))
+	    	g.drawImage(gif.getImage(), p2XPos, p2YPos, null);
+	    
 	}
 
 	
