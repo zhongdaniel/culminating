@@ -184,11 +184,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 				p1Projectile3Used = true;
 			}
 		}
-		
-		//P1 Special
-		if (e.getKeyCode() == 69) { //E
-			
-		} 
 			
 			
 		//P2 Jump 
