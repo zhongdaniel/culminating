@@ -80,11 +80,13 @@ public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
   
 		g.drawString("Instructions:",100,200);  
 		g.drawString("Player 1 Controls:",100,225);   
-		g.drawString("Move Character - WASD",100,250);   
-		g.drawString("Attack - Q",100,275);   
+		g.drawString("Move Left - A",100,250);  
+		g.drawString("Move Right - D",100,275);   
+		g.drawString("Attack - Q",100,300);   
 		g.drawString("Player 2 Controls:",740,225);   
-  		g.drawString("Move Character - IJKL",740,250);   
-  		g.drawString("Attack - U",740,275);   
+  		g.drawString("Move Left - J",740,250);   
+  		g.drawString("Move Right - L",740,250);   
+  		g.drawString("Attack - U",740,300);   
  
  }
  
