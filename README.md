@@ -1,4 +1,4 @@
-Simple street fighter inspired fighter game coded in Java. made up of Aqua, Megumin, and Wiz from the anime Konosuba.                                          
+Simple street fighter inspired fighter game coded in Java. Made up of Megumin, and Wiz from the anime Konosuba.                                          
  
 Credits:                                                                       
 Sprites - DigiSolstice on DeviantArt                                                                                
