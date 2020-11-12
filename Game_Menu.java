@@ -374,7 +374,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			if (p1Hitbox.intersects(p2Projectile1Hitbox)) {
 				p1HP -= 15;
 				p2Projectile1Used = false;
-				System.out.println(p1HP);
 				p2Projectile1XPos = 1000;
 				p2Projectile1YPos = 650;
 
@@ -383,7 +382,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			if (p1Hitbox.intersects(p2Projectile2Hitbox)) {
 				p1HP -= 15;
 				p2Projectile2Used = false;
-				System.out.println(p1HP);
 				p2Projectile2XPos = 1000;
 				p2Projectile2YPos = 620;
 
@@ -392,7 +390,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			if (p1Hitbox.intersects(p2Projectile3Hitbox)) {
 				p1HP -= 15;
 				p2Projectile3Used = false;
-				System.out.println(p1HP);
 				p2Projectile3XPos = 1000;
 				p2Projectile3YPos = 590;
 
@@ -401,7 +398,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			if (p2Hitbox.intersects(p1Projectile1Hitbox)) {
 				p2HP -= 15;
 				p1Projectile1Used = false;
-				System.out.println(p2HP);
 				p1Projectile1XPos = 200;
 				p1Projectile1YPos = 650;
 			}
@@ -409,7 +405,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			if (p2Hitbox.intersects(p1Projectile2Hitbox)) {
 				p2HP -= 15;
 				p1Projectile2Used = false;
-				System.out.println(p2HP);
 				p1Projectile2XPos = 200;
 				p1Projectile2YPos = 620;
 			}
@@ -417,7 +412,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			if (p2Hitbox.intersects(p1Projectile3Hitbox)) {
 				p2HP -= 15;
 				p1Projectile3Used = false;
-				System.out.println(p2HP);
 				p1Projectile3XPos = 200;
 				p1Projectile3YPos = 590;
 			}
