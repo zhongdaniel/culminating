@@ -7,9 +7,9 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
-	private JButton playButton, goHome, restart;
-	private ImageIcon play;
-	private Image playImg, sizedImg;
+	private JButton playButton, restartButton, quitButton;
+	private ImageIcon play, quit, restart;
+	private Image playImg, sizedImg, quitImg, sizedQuit, restartImg, sizedRestart;
   
 	public Pause_Menu(){  // constructor
 		//Creating the Buttons
@@ -24,19 +24,32 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 		playButton.setContentAreaFilled(false);
 		playButton.setBorderPainted(false);
 	
-		goHome = new JButton("     Quit     ");
-		goHome.setBounds(100, 350, 200, 35);
-		goHome.setBackground(new Color(227, 88, 64));
+		quit = new ImageIcon("Quit_Button.png");
+		quitImg = quit.getImage();
+		sizedQuit = quitImg.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH); 
+		quit = new ImageIcon(sizedQuit);
 		
-		restart = new JButton("     Restart Game     ");
-		restart.setFont(new Font("Garamond", Font.BOLD, 16));
-		restart.setBounds(100, 400, 200, 35);
-		restart.setBackground(new Color(227, 88, 64));
+		quitButton = new JButton(quit);
+		quitButton.setBounds(100, 350, 150, 50);
+		quitButton.setOpaque(false);
+		quitButton.setContentAreaFilled(false);
+		quitButton.setBorderPainted(false);
+		
+		restart = new ImageIcon("Restart_Button.png");
+		restartImg = restart.getImage();
+		sizedRestart = restartImg.getScaledInstance(350, 50, java.awt.Image.SCALE_SMOOTH); 
+		restart = new ImageIcon(sizedRestart);
+		
+		restartButton = new JButton(restart);
+		restartButton.setBounds(100, 400, 350, 50);
+		restartButton.setOpaque(false);
+		restartButton.setContentAreaFilled(false);
+		restartButton.setBorderPainted(false);
 		
 		//Adding Listeners
 		playButton.addActionListener(this);
-		goHome.addActionListener(this);
-		restart.addActionListener(this);
+		quitButton.addActionListener(this);
+		restartButton.addActionListener(this);
 		addKeyListener(this);
 		
 		//Adding Objects
@@ -44,8 +57,8 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 		this.setBackground(Color.GREEN);
 		
 		this.add(playButton);
-		this.add(goHome);
-		this.add(restart);
+		this.add(quitButton);
+		this.add(restartButton);
 	}
  
 	//Action Events
@@ -54,10 +67,10 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 		if (e.getSource() == playButton) 
 			Main_Game.cardsL.show(Main_Game.c, "Game");
      
-		if (e.getSource() == goHome) 
+		if (e.getSource() == quitButton) 
 			Main_Game.cardsL.show(Main_Game.c, "Home");
      
-		if (e.getSource() == restart) {
+		if (e.getSource() == restartButton) {
 			Main_Game.restartGameBool = true;
 			Main_Game.cardsL.show(Main_Game.c, "Game");
      }
