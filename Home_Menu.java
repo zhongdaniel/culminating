@@ -8,20 +8,35 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
 	private JButton goGame;
 	private JButton goRules;
-	private ImageIcon bg;
+	private ImageIcon bg, game, rules;
+	private Image gameImg, sizedImg, rulesImg, sizeRules;
 	
 	//Constructor
 	public Home_Menu(){
 		//Creating the Objects
-		goGame = new JButton("     Go to game panel     ");
-		goGame.setFont(new Font("Garamond", Font.BOLD, 16));
-		goGame.setBounds(100, 350, 200, 35);
-		goGame.setBackground(new Color(227, 88, 64));
+		game = new ImageIcon("Play_Button.png");
+		gameImg = game.getImage();
+		sizedImg = gameImg.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH); 
+		game = new ImageIcon(sizedImg);
 		
-		goRules = new JButton("     Go to rules panel     ");
-		goRules.setFont(new Font("Garamond", Font.BOLD, 16));
-		goRules.setBounds(100, 400, 200, 35);
-		goRules.setBackground(new Color(227, 88, 64));
+		goGame = new JButton(game);
+		goGame.setBounds(150, 380, 150, 50);
+		goGame.setOpaque(false);
+		goGame.setContentAreaFilled(false);
+		goGame.setBorderPainted(false);
+		
+		
+		rules = new ImageIcon("Rules_Button.png");
+		rulesImg = rules.getImage();
+		sizeRules = rulesImg.getScaledInstance(175, 50, java.awt.Image.SCALE_SMOOTH); 
+		rules = new ImageIcon(sizeRules);
+		
+		goRules = new JButton(rules);
+		goRules.setBounds(145, 450, 175, 50);
+		goRules.setOpaque(false);
+		goRules.setContentAreaFilled(false);
+		goRules.setBorderPainted(false);
+		
 		bg = new ImageIcon("home_background.png");
 		
 		//Adding Listeners
