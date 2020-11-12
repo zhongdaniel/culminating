@@ -498,25 +498,25 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			
 			if (p1Projectile2XPos <= 0 || p1Projectile2XPos >= 1280) {
 				p1Projectile2XPos = 200;
-				p1Projectile2YPos = 650;
+				p1Projectile2YPos = 620;
 				p1Projectile2Used = false;
 			}
 
 			if (p1Projectile3XPos <= 0 || p1Projectile3XPos >= 1280) {
 				p1Projectile3XPos = 200;
-				p1Projectile3YPos = 620;
+				p1Projectile3YPos = 590;
 				p1Projectile3Used = false;
 			}
 			
 			if (p2Projectile1XPos <= 0 || p2Projectile1XPos >= 1280) {
 				p2Projectile1XPos = 1000;
-				p2Projectile1YPos = 620;
+				p2Projectile1YPos = 650;
 				p2Projectile1Used = false;
 			}
 			
 			if (p2Projectile2XPos <= 0 || p2Projectile2XPos >= 1280) {
 				p2Projectile2XPos = 1000;
-				p2Projectile2YPos = 590;
+				p2Projectile2YPos = 620;
 				p2Projectile2Used = false;
 			}
 			if (p2Projectile3XPos <= 0 || p2Projectile3XPos >= 1280) {
