@@ -11,19 +11,22 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
+public class Rules_Menu extends JPanel implements ActionListener{
 	//Variables
 	private JButton backButton;
 	private ImageIcon bg, back, header;
 	private Image backImg, sizedBack;
-	private Color buttonColour1, buttonColour2;
+	private Color textColour, buttonColour;
 	
 	public Rules_Menu(){  // constructor
-		//Creating the Back Button
+		
+		//Importing the back button
 		back = new ImageIcon("Back_Button.png");
 		backImg = back.getImage();
 		sizedBack = backImg.getScaledInstance(170, 40, java.awt.Image.SCALE_SMOOTH); 
 		back = new ImageIcon(sizedBack);
+		
+		//Creating the back button
 		backButton = new JButton(back);
 		backButton.setBounds(100, 537, 170, 40);
 		backButton.setOpaque(false);
@@ -36,11 +39,10 @@ public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
   
 		//Adding Listeners
 		backButton.addActionListener(this);
-		addKeyListener(this);
 		
-		//Setting colour presets
-		buttonColour1 = new Color(88, 88, 88, 200);
-		buttonColour2 = new Color(255, 255, 255, 200);
+		//Setting colour presets for buttons
+		textColour = new Color(88, 88, 88, 200);
+		buttonColour = new Color(255, 255, 255, 200);
   
 		//Adding Objects
 		this.setLayout(null);
@@ -51,26 +53,9 @@ public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
   
 	//Action Events
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == backButton) 
+		if(e.getSource() == backButton) //returns to home page
 			Main_Game.cardsL.show(Main_Game.c, "Home");
 		
-	}
-  
-	//Key Events
-	public void keyPressed( KeyEvent e ) {
-     
-		if(e.getKeyCode() == 27)// 27 is escape
-			Main_Game.cardsL.show(Main_Game.c, "Home");
-	}
-
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-  
-	}
-
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-  
 	}
  
 	//Draw Component
@@ -85,13 +70,13 @@ public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
 		g.drawImage(header.getImage(), 90, 40, 400, 70, null);
 		
 		//Create Translucent Background for Text
-		g.setColor(buttonColour1);
+		g.setColor(textColour);
 		g.fillRoundRect(80, 120, 300, 110, 30, 30);
 		g.fillRoundRect(720, 120, 300, 110, 30, 30);
 		g.fillRoundRect(80, 270, 1050, 210, 30, 30);
 		
 		//Set and added Translucent Background Colour for Button
-		g.setColor(buttonColour2);
+		g.setColor(buttonColour);
 		g.fillRoundRect(90, 525, 200, 60, 30, 30);
     
 		//Sets Fonts
