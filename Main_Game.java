@@ -1,3 +1,10 @@
+/*|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+ * File: Main_Game.java
+ * Date Created: Oct 27th
+ * Co-Authors: Anton Qi and Daniel Zhong
+ * Desc: This file's code is to create and organize all the files, and to set the windows
+ * |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+ */
 import java.awt.*;
 import javax.swing.*;
 
@@ -18,17 +25,21 @@ public class Main_Game extends JFrame{
 	//Constructor
 	public Main_Game(){
 		c = getContentPane();
+		//make cards of files
 		cardsL=new CardLayout();
 		c.setLayout(cardsL);
+		
+		//initializing boolean
 		restartGameBool = true;
 
+		//making new files
 		homeP = new Home_Menu();
 		gameP = new Game_Menu();
 		pauseP = new Pause_Menu();
 		rulesP = new Rules_Menu();
 		resultsP = new Results_Menu();
 		
-		  
+		//adding files to cards
 	    c.add("Home", homeP);
 	    c.add("Rules", rulesP);
 	    c.add("Pause", pauseP);
@@ -40,6 +51,7 @@ public class Main_Game extends JFrame{
 	public static void main(String[] args) {
 		Main_Game f = new Main_Game();
 		
+		//creating window
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
 		f.setResizable(false);
