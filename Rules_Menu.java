@@ -1,3 +1,10 @@
+/*|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+ * File: Main_Game.java
+ * Date Created: Oct 31st
+ * Co-Authors: Anton Qi and Daniel Zhong
+ * Desc: This file's code displays how to play the game, and the controls for each player
+ * |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+ */
 import java.awt.*;
 import java.awt.event.*;
 
@@ -9,7 +16,7 @@ public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
 	private JButton backButton;
 	private ImageIcon bg, back, header;
 	private Image backImg, sizedBack;
-	private Color bgColour, buttonColour;
+	private Color buttonColour1, buttonColour2;
 	
 	public Rules_Menu(){  // constructor
 		//Creating the Back Button
@@ -32,8 +39,8 @@ public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
 		addKeyListener(this);
 		
 		//Setting colour presets
-		bgColour = new Color(88, 88, 88, 200);
-		buttonColour = new Color(255, 255, 255, 200);
+		buttonColour1 = new Color(88, 88, 88, 200);
+		buttonColour2 = new Color(255, 255, 255, 200);
   
 		//Adding Objects
 		this.setLayout(null);
@@ -73,18 +80,22 @@ public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
   
 		//add background
 		g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
-  
-		g.setColor(bgColour);
+		
+		//Add the Header
+		g.drawImage(header.getImage(), 90, 40, 400, 70, null);
+		
+		//Create Translucent Background for Text
+		g.setColor(buttonColour1);
 		g.fillRoundRect(80, 120, 300, 110, 30, 30);
 		g.fillRoundRect(720, 120, 300, 110, 30, 30);
 		g.fillRoundRect(80, 270, 1050, 210, 30, 30);
 		
-		g.setColor(buttonColour);
+		//Set and added Translucent Background Colour for Button
+		g.setColor(buttonColour2);
 		g.fillRoundRect(90, 525, 200, 60, 30, 30);
-		
-		g.drawImage(header.getImage(), 90, 40, 400, 70, null);
     
-		g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC,  18));
+		//Sets Fonts
+		g.setFont(new Font("Arial", Font.BOLD,  18));
 		g.setColor(java.awt.Color.white);
   
 		//Shows Player 1 Keys
@@ -93,14 +104,14 @@ public class Rules_Menu extends JPanel implements ActionListener, KeyListener{
 		g.drawString("Move Left - A",100,180);  
 		g.drawString("Move Right - D",100,200);   
 		g.drawString("Attack - Q",100,220);   
+		
 		//Shows Player 2 Keys
 		g.drawString("Player 2 Controls:",740,140);  
 		g.drawString("Jump - I",740,160);  
   		g.drawString("Move Left - J",740,180);   
   		g.drawString("Move Right - L",740,200);   
   		g.drawString("Attack - U",740,220);   
-  		
-  		g.setFont(new Font("Arial", Font.BOLD,  18));
+
   		//Shows Introduction
   		g.drawString("Hello and Welcome to Konosuba the game!",100,300);
   		g.drawString("Our game is based off the popular anime series, Kono Subarashii, commonly known as Konosuba!",100,320);
