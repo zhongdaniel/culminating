@@ -4,7 +4,7 @@ Due to GitHub size restrictions, we've uploaded the audio files to a Google Driv
 
 Credits:
 
-Visuals:
+Visuals:                       
 Sprites - DigiSolstice on DeviantArt                                                                                                 
 Konosuba Font 1 - Grobold Font by Guy Buhry on dafont.com                                                       
 Konosuba Font 2 - Tiki Tropic Font by Sharkshock on dafont.com                                           
