@@ -54,7 +54,7 @@ public class Results_Menu extends JPanel implements ActionListener{
 		loseImg = new ImageIcon("Loser.png");
 		
 		//define the button's background colour
-		buttonColour = new Color(255, 255, 255, 100);
+		buttonColour = new Color(153, 238, 255, 150);
 		
 		//Adding Listeners
 		againButton.addActionListener(this);
@@ -96,8 +96,8 @@ public class Results_Menu extends JPanel implements ActionListener{
 			
 			//determines which sprite to put under winner and loser
 			if(winner == 0) { //tie, both sprites are winners
-				g.drawImage(p1.getImage(), 300, 200, 112, 180, null);
-				g.drawImage(p2.getImage(), 450, 100, 112, 180, null);
+				g.drawImage(p1.getImage(), 220, 200, 112, 180, null);
+				g.drawImage(p2.getImage(), 420, 200, 112, 180, null);
 			}
 			
 			else if(winner == 1) { //wiz wins
