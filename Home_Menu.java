@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Home_Menu extends JPanel implements ActionListener, KeyListener{
+public class Home_Menu extends JPanel implements ActionListener{
 	//Variables
 	private Color buttonColour;
 	private JButton goGame;
@@ -21,9 +21,8 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 		sizedImg = gameImg.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH); 
 		game = new ImageIcon(sizedImg);
 		
-		
 		goGame = new JButton(game); //Turning the image into a button
-		goGame.setBounds(210, 360, 190, 90); //Setting button size and location
+		goGame.setBounds(210, 400, 190, 90); //Setting button size and location
 		goGame.setOpaque(false);
 		goGame.setContentAreaFilled(false);
 		goGame.setBorderPainted(false);
@@ -35,7 +34,7 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 		rules = new ImageIcon(sizeRules);
 		
 		goRules = new JButton(rules); //Turning the image into a button
-		goRules.setBounds(220, 460, 190, 90); //Setting button size and location
+		goRules.setBounds(220, 500, 190, 90); //Setting button size and location
 		goRules.setOpaque(false);
 		goRules.setContentAreaFilled(false);
 		goRules.setBorderPainted(false);
@@ -45,14 +44,7 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 		header = new ImageIcon("Header.png"); //TItle
 		
 		//Add colour presets for buttons
-		buttonColour = new Color(255, 255, 255, 100);
-		
-		//Adding Listeners
-		goGame.addActionListener(this);
-		goRules.addActionListener(this);
-		goGame.addKeyListener(this);
-		goRules.addKeyListener(this);
-		
+		buttonColour = new Color(153, 238, 255, 150);
 		
 		//Adding Objects
 	    this.setLayout(null);
@@ -60,33 +52,23 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 	    this.setBackground(Color.CYAN);
 		this.add(goRules);
 		
+		//listens for mouse clicks on buttons
+		goGame.addActionListener(this);
+        goRules.addActionListener(this);
+		
 		//Resetting the game
 		Main_Game.restartGameBool = true;
 		
 	}
 	    	
-	//Key Events
-	public void keyTyped(KeyEvent e) {
-					
-	}
-
-	public void keyReleased(KeyEvent e) {
-					
-	}
-				
-	public void keyPressed( KeyEvent e ) {
-		if(e.getKeyCode()==13) { // 13 is enter
-			Main_Game.cardsL.show(Main_Game.c, "Game"); 
-	
-		}
-	}
-	
 	//Action Events
 	public void actionPerformed(ActionEvent e) {
 
+		//if the rules button is clicked, goes to the rules
 		if(e.getSource() == goRules) 
 			Main_Game.cardsL.show(Main_Game.c, "Rules"); 
-		    	
+		
+		//if the play button is clicked, goes to the game
 		if(e.getSource() == goGame) {
 			Main_Game.cardsL.show(Main_Game.c, "Game");
 		}
@@ -104,9 +86,9 @@ public class Home_Menu extends JPanel implements ActionListener, KeyListener{
 			g.drawImage(header.getImage(), 70, 100, 800, 100, null);
 			
 			//Create backgrounds for the buttons
-			g.setColor(buttonColour);
-			g.fillRoundRect(220, 375, 170, 65, 10, 10);
-			g.fillRoundRect(220, 470, 190, 65, 10, 10);
+			g.setColor(buttonColour); //set 
+			g.fillRoundRect(220, 400, 170, 90, 50, 50);
+			g.fillRoundRect(220, 500, 190, 90, 50, 50);
 			
 			
 		}
