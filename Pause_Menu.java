@@ -8,6 +8,9 @@
  */
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
+
+import javax.sound.sampled.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
@@ -77,15 +80,54 @@ public class Pause_Menu extends JPanel implements ActionListener{
 	//Action Events
 	public void actionPerformed(ActionEvent e) { //define the actions of the buttons
      
-		if (e.getSource() == resumeButton) //resumes game
+		if (e.getSource() == resumeButton) {//resumes game
 			Main_Game.cardsL.show(Main_Game.c, "Game");
-     
-		if (e.getSource() == quitButton) //return to home page
+			
+			//Changing Music
+			try {
+				Main_Game.currentMusic.stop();
+				Main_Game.currentMusic = AudioSystem.getClip();
+				Main_Game.currentMusic.open(AudioSystem.getAudioInputStream(new File("Game_Music.wav")));
+				Main_Game.currentMusic.start();
+			} 
+			
+			catch (Exception e1) {
+				System.out.println("Something wrong with audio.");
+			}
+		}
+		
+		if (e.getSource() == quitButton) {//return to home page
 			Main_Game.cardsL.show(Main_Game.c, "Home");
-     
+			
+			//Changing Music
+			try {
+				Main_Game.currentMusic.stop();
+				Main_Game.currentMusic = AudioSystem.getClip();
+				Main_Game.currentMusic.open(AudioSystem.getAudioInputStream(new File("Home_Music.wav")));
+				Main_Game.currentMusic.start();
+			} 
+			
+			catch (Exception e1) {
+				System.out.println("Something wrong with audio.");
+			}
+			
+		}
+		
 		if (e.getSource() == restartButton) { //restart game
 			Main_Game.restartGameBool = true;
 			Main_Game.cardsL.show(Main_Game.c, "Game");
+			
+			//Changing Music
+			try {
+				Main_Game.currentMusic.stop();
+				Main_Game.currentMusic = AudioSystem.getClip();
+				Main_Game.currentMusic.open(AudioSystem.getAudioInputStream(new File("Game_Music.wav")));
+				Main_Game.currentMusic.start();
+			} 
+			
+			catch (Exception e1) {
+				System.out.println("Something wrong with audio.");
+			}
      }
  }
     
