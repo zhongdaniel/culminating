@@ -9,6 +9,9 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
+
+import javax.sound.sampled.*;
 
 @SuppressWarnings("serial")
 public class Game_Menu extends JPanel implements ActionListener, KeyListener{
@@ -131,18 +134,54 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			Main_Game.restartGameBool = true;
 			Main_Game.resultsP.getWinner(0);
 			Main_Game.cardsL.show(Main_Game.c, "Results");
+			
+			//Changing Music
+			try {
+				Main_Game.currentMusic.stop();
+				Main_Game.currentMusic = AudioSystem.getClip();
+				Main_Game.currentMusic.open(AudioSystem.getAudioInputStream(new File("Results_Music.wav")));
+				Main_Game.currentMusic.start();
+			} 
+			
+			catch (Exception e1) {
+				System.out.println("Something wrong with audio.");
+			}
 		}
 		
 		else if (p1HP == 0) {
 			Main_Game.restartGameBool = true;
 			Main_Game.resultsP.getWinner(1);
 			Main_Game.cardsL.show(Main_Game.c, "Results");
+			
+			//Changing Music
+			try {
+				Main_Game.currentMusic.stop();
+				Main_Game.currentMusic = AudioSystem.getClip();
+				Main_Game.currentMusic.open(AudioSystem.getAudioInputStream(new File("Results_Music.wav")));
+				Main_Game.currentMusic.start();
+			} 
+			
+			catch (Exception e1) {
+				System.out.println("Something wrong with audio.");
+			}
 		}
 		
 		else if (p2HP == 0) {
 			Main_Game.restartGameBool = true;
 			Main_Game.resultsP.getWinner(2);
 			Main_Game.cardsL.show(Main_Game.c, "Results");
+			
+			//Changing Music
+			try {
+				Main_Game.currentMusic.stop();
+				Main_Game.currentMusic = AudioSystem.getClip();
+				Main_Game.currentMusic.open(AudioSystem.getAudioInputStream(new File("Results_Music.wav")));
+				Main_Game.currentMusic.start();
+			} 
+			
+			catch (Exception e1) {
+				System.out.println("Something wrong with audio.");
+			}
 		}
 	}
 	
@@ -156,9 +195,21 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 
 	@Override
 	public void keyPressed( KeyEvent e ) { //checks which key is pressed
-		if (e.getKeyCode() == 27) // 27 is escape
+		if (e.getKeyCode() == 27) {// 27 is escape
 			Main_Game.cardsL.show(Main_Game.c, "Pause");
-		
+			
+			//Changing Music
+			try {
+				Main_Game.currentMusic.stop();
+				Main_Game.currentMusic = AudioSystem.getClip();
+				Main_Game.currentMusic.open(AudioSystem.getAudioInputStream(new File("Pause_Music.wav")));
+				Main_Game.currentMusic.start();
+			} 
+			
+			catch (Exception e1) {
+				System.out.println("Something wrong with audio.");
+			}
+		}
 		//P1 Movement
 		if (e.getKeyCode() == 65) //A
 			aPressed = true;	
@@ -270,6 +321,18 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			dPressed = false;
 			jPressed = false;
 			lPressed = false;
+			
+			//Changing Music
+			try {
+				Main_Game.currentMusic.stop();
+				Main_Game.currentMusic = AudioSystem.getClip();
+				Main_Game.currentMusic.open(AudioSystem.getAudioInputStream(new File("Pause_Music.wav")));
+				Main_Game.currentMusic.start();
+			} 
+			
+			catch (Exception e1) {
+				System.out.println("Something wrong with audio.");
+			}
 		}
 		
 		//Game Loop
@@ -557,11 +620,11 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    g.drawImage(gameBg.getImage(), 0, 0, this.getWidth(), 530, null);
 	    
 	    //add banner between health bars
-	    g.drawImage(banner.getImage(), 270, 530, 710, 170, null);
+	    g.drawImage(banner.getImage(), 300, 530, 680, 170, null);
 	    
 	    //add background for health and ammo display
 	    g.setColor(boxColour);
-	    g.fillRoundRect(0, 530, 270, 170, 30, 30);
+	    g.fillRoundRect(0, 530, 300, 170, 30, 30);
 	    g.fillRoundRect(980, 530, 300, 170, 30, 30);
 	    
 	    //Bullets
@@ -601,7 +664,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    
 	    //updates player health
 	    g.setColor(java.awt.Color.black);
-	    g.setFont(new Font("Courier", Font.BOLD, 50));
+	    g.setFont(new Font("Courier	", Font.BOLD, 50));
 	    g.drawString(p1HP + "", 30, 650);
 	    g.drawString(p2HP + "", 1100, 650);
 	    
