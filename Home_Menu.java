@@ -1,6 +1,6 @@
 /*|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
  * File: Home_Menu.java
- * Date Created: Oct30th
+ * Date Created: Oct 27th
  * Co-Authors: Anton Qi and Daniel Zhong
  * Desc: This file's code displays the home screen, which is opened automatically when the game is run.
  * Two Buttons allow for the player to go either to play the game, or to read the instructions
@@ -30,7 +30,7 @@ public class Home_Menu extends JPanel implements ActionListener{
 		game = new ImageIcon(sizedImg);
 		
 		goGame = new JButton(game); //Turning the image into a button
-		goGame.setBounds(210, 400, 190, 90); //Setting button size and location
+		goGame.setBounds(170, 380, 190, 90); //Setting button size and location
 		goGame.setOpaque(false);
 		goGame.setContentAreaFilled(false);
 		goGame.setBorderPainted(false);
@@ -42,7 +42,7 @@ public class Home_Menu extends JPanel implements ActionListener{
 		rules = new ImageIcon(sizeRules);
 		
 		goRules = new JButton(rules); //Turning the image into a button
-		goRules.setBounds(220, 500, 190, 90); //Setting button size and location
+		goRules.setBounds(180, 480, 190, 90); //Setting button size and location
 		goRules.setOpaque(false);
 		goRules.setContentAreaFilled(false);
 		goRules.setBorderPainted(false);
@@ -91,12 +91,12 @@ public class Home_Menu extends JPanel implements ActionListener{
 			g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
 			
 			//Add the title
-			g.drawImage(header.getImage(), 70, 100, 800, 100, null);
+			g.drawImage(header.getImage(), 40, 95, 720, 90, null);
 			
 			//Create backgrounds for the buttons
 			g.setColor(buttonColour); //set 
-			g.fillRoundRect(220, 400, 170, 90, 30, 30);
-			g.fillRoundRect(220, 500, 190, 90, 30, 30);
+			g.fillRoundRect(180, 380, 170, 90, 30, 30);
+			g.fillRoundRect(180, 480, 190, 90, 30, 30);
 			
 			
 		}
