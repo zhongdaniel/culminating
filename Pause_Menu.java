@@ -8,7 +8,7 @@ import javax.swing.*;
 public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 	//Variables
 	private JButton playButton, restartButton, quitButton;
-	private ImageIcon play, quit, restart;
+	private ImageIcon play, quit, restart, bg;
 	private Image playImg, sizedImg, quitImg, sizedQuit, restartImg, sizedRestart;
   
 	public Pause_Menu(){  // constructor
@@ -26,11 +26,11 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 	
 		quit = new ImageIcon("Quit_Button.png");
 		quitImg = quit.getImage();
-		sizedQuit = quitImg.getScaledInstance(150, 50, java.awt.Image.SCALE_SMOOTH); 
+		sizedQuit = quitImg.getScaledInstance(120, 50, java.awt.Image.SCALE_SMOOTH); 
 		quit = new ImageIcon(sizedQuit);
 		
 		quitButton = new JButton(quit);
-		quitButton.setBounds(100, 350, 150, 50);
+		quitButton.setBounds(95, 325, 120, 50);
 		quitButton.setOpaque(false);
 		quitButton.setContentAreaFilled(false);
 		quitButton.setBorderPainted(false);
@@ -45,6 +45,9 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 		restartButton.setOpaque(false);
 		restartButton.setContentAreaFilled(false);
 		restartButton.setBorderPainted(false);
+		
+		
+		bg = new ImageIcon("pauseBg.png");
 		
 		//Adding Listeners
 		playButton.addActionListener(this);
@@ -95,8 +98,8 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 	//Draw Component
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		g.setFont(new Font("Arial", Font.BOLD+Font.ITALIC, 18));
-		g.drawString("Game is paused",200,300);
+		
+		g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
 	}
 }
 
