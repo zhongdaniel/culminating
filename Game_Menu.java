@@ -1,8 +1,14 @@
+/*|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+ * File: Game_Menu.java
+ * Date Created: Oct 27th
+ * Co-Authors: Anton Qi and Daniel Zhong
+ * Desc: This file's code diplays and runs the game, includes 2 sprites, projectiles, and a health display
+ * |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+ */
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-
-
 
 @SuppressWarnings("serial")
 public class Game_Menu extends JPanel implements ActionListener, KeyListener{
@@ -24,6 +30,8 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Constructor
 	public Game_Menu() {
 		//Variable Assignment
+		
+		//sets variables for position of ammo display
 		p1Projectile1XPos = 200;
         p1Projectile1YPos = 650;
         p2Projectile1XPos = 1000;
@@ -41,32 +49,40 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 
 		
 		//Creating the objects
-		pause = new ImageIcon("Pause.png");
+		pause = new ImageIcon("Pause.png"); //importing pause symbol
 		pauseImg = pause.getImage();
 		sizedImg = pauseImg.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
 		pause = new ImageIcon(sizedImg);
 		
-		myTimer = new Timer(60, this ); 
-		
-		p1Sprite = new ImageIcon("MeguminSprite.png");
-		p2Sprite = new ImageIcon("WizSprite.png");
-		
-		hp1 = new ImageIcon("P1hp.png");
-		hp2 = new ImageIcon("P2hp.png");
-		
-	    projectileSpriteRight = new ImageIcon("AquaSpriteRight.png");
-	    projectileSpriteLeft = new ImageIcon("AquaSpriteLeft.png");
-	    
+		//creating pause button
 		pauseButton = new JButton(pause);
 		pauseButton.setBounds(1200, 10, 50, 50);
 		pauseButton.setOpaque(false);
 		pauseButton.setContentAreaFilled(false);
 		pauseButton.setBorderPainted(false);
+		
+		//creating time
+		myTimer = new Timer(60, this ); 
+		
+		//importing sprites
+		p1Sprite = new ImageIcon("MeguminSprite.png");
+		p2Sprite = new ImageIcon("WizSprite.png");
+		
+		//importing hp text
+		hp1 = new ImageIcon("P1hp.png");
+		hp2 = new ImageIcon("P2hp.png");
+		
+		//importing projectile image
+	    projectileSpriteRight = new ImageIcon("AquaSpriteRight.png");
+	    projectileSpriteLeft = new ImageIcon("AquaSpriteLeft.png");
 	  
+	    //importing game background
 		gameBg = new ImageIcon("gameBg.png");
+		
+		//creating health box colour preset
 		boxColour = new Color(229, 146, 168, 200);
+		
 		//Adding Listeners
-
 		pauseButton.addActionListener(this);
 		this.addKeyListener(this);
 		pauseButton.setFocusable(true);
@@ -74,20 +90,19 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		pauseButton.addKeyListener(this);
 		
 		//Adding Objects
-		
 		this.setLayout(null);
-		
 		this.add(pauseButton);
 		this.setBackground(Color.PINK);
 		
+		//start timer
 		myTimer.start();
 		
 
 	}
 	
 	
-	// Custom Events
-	public void restartGame() {
+	// Custom Events 
+	public void restartGame() { //resets variables from game restart
 		
 		Main_Game.restartGameBool = false;
 		
@@ -107,7 +122,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		p2YPos = 400;
 	}
 	
-	public void checkGame() {
+	public void checkGame() { //checks for game winner
 		
 		if (p1HP == 0 && p2HP == 0) { //tie
 			Main_Game.restartGameBool = true;
@@ -136,9 +151,8 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		
 	}
 
-	
 	@Override
-	public void keyPressed( KeyEvent e ) {
+	public void keyPressed( KeyEvent e ) { //checks which key is pressed
 		if (e.getKeyCode() == 27) // 27 is escape
 			Main_Game.cardsL.show(Main_Game.c, "Pause");
 		
@@ -220,7 +234,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	}	
 		
 	@Override
-	public void keyReleased(KeyEvent e) {
+	public void keyReleased(KeyEvent e) { //checked if key was released
 		// TODO Auto-generated method stub
 		
 		
@@ -246,7 +260,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	//Action Events
 	public void actionPerformed(ActionEvent e) {
 		
-		
+		//stops game and changes to pause screen if game paused
 		if (e.getSource() == pauseButton) {
 			Main_Game.cardsL.show(Main_Game.c, "Pause");
 			aPressed = false;
@@ -254,6 +268,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			jPressed = false;
 			lPressed = false;
 		}
+		
 		//Game Loop
 		if (e.getSource() == myTimer ) {
 			
@@ -265,10 +280,13 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 				restartGame();
 
 			
-			//Hitboxes
+			//Creating Hitboxes
+			
+			//Player Hitboxes
 			p1Hitbox = new Rectangle(p1XPos, p1YPos, 75, 120);
 			p2Hitbox = new Rectangle(p2XPos, p2YPos, 75, 120);
 			
+			//Projectile Hitboxes
 			p1Projectile1Hitbox = new Rectangle(p1Projectile1XPos, p1Projectile1YPos, 50, 25);
 			p2Projectile1Hitbox = new Rectangle(p2Projectile1XPos, p2Projectile1YPos, 50, 25);
 			
@@ -334,7 +352,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			}
 			//Adding Collision
 			
-			//Borders
+			//Borders from collision
 			if (p1XPos < 0)
 				p1XPos += 15;
 			
@@ -368,7 +386,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			
 			//Taking Damage
 		
-			if (p1Hitbox.intersects(p2Projectile1Hitbox)) {
+			if (p1Hitbox.intersects(p2Projectile1Hitbox)) { //player 1 taking damage, adding ammo back
 				p1HP -= 15;
 				p2Projectile1Used = false;
 				p2Projectile1XPos = 1000;
@@ -376,7 +394,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 
 			}
 			
-			if (p1Hitbox.intersects(p2Projectile2Hitbox)) {
+			if (p1Hitbox.intersects(p2Projectile2Hitbox)) { //player 1 taking damage, adding ammo back
 				p1HP -= 15;
 				p2Projectile2Used = false;
 				p2Projectile2XPos = 1000;
@@ -384,7 +402,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 
 			}
 			
-			if (p1Hitbox.intersects(p2Projectile3Hitbox)) {
+			if (p1Hitbox.intersects(p2Projectile3Hitbox)) { //player 1 taking damage, adding ammo back
 				p1HP -= 15;
 				p2Projectile3Used = false;
 				p2Projectile3XPos = 1000;
@@ -392,21 +410,21 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 
 			}
 				
-			if (p2Hitbox.intersects(p1Projectile1Hitbox)) {
+			if (p2Hitbox.intersects(p1Projectile1Hitbox)) { //player 2 taking damage, adding ammo back
 				p2HP -= 15;
 				p1Projectile1Used = false;
 				p1Projectile1XPos = 200;
 				p1Projectile1YPos = 650;
 			}
 			
-			if (p2Hitbox.intersects(p1Projectile2Hitbox)) {
+			if (p2Hitbox.intersects(p1Projectile2Hitbox)) { //player 2 taking damage, adding ammo back
 				p2HP -= 15;
 				p1Projectile2Used = false;
 				p1Projectile2XPos = 200;
 				p1Projectile2YPos = 620;
 			}
 			
-			if (p2Hitbox.intersects(p1Projectile3Hitbox)) {
+			if (p2Hitbox.intersects(p1Projectile3Hitbox)) { //player 2 taking damage, adding ammo back
 				p2HP -= 15;
 				p1Projectile3Used = false;
 				p1Projectile3XPos = 200;
@@ -418,7 +436,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			
 				
 			//P1 on left, P2 on right
-			if (p1XPos <= p2XPos) {
+			if (p1XPos <= p2XPos) { //determine shootings position
 					
 				p1ShootingRight = true;
 				p1ShootingLeft = false;
@@ -449,7 +467,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			}
 				
 			//P2 on left, P1 on right
-			if (p1XPos > p2XPos) {
+			if (p1XPos > p2XPos) { //determine shootings position
 				
 				p1ShootingLeft = true;
 				p1ShootingRight = false;
@@ -481,7 +499,8 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 			
 			//Reloading upon missing
 			
-			if (p1Projectile1XPos <= 0 || p1Projectile1XPos >= 1280) {
+			//reloading player 1's ammo
+			if (p1Projectile1XPos <= 0 || p1Projectile1XPos >= 1280) { 
 				p1Projectile1XPos = 200;
 				p1Projectile1YPos = 650;
 				p1Projectile1Used = false;
@@ -499,6 +518,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 				p1Projectile3Used = false;
 			}
 			
+			//reloading player 2's ammo
 			if (p2Projectile1XPos <= 0 || p2Projectile1XPos >= 1280) {
 				p2Projectile1XPos = 1000;
 				p2Projectile1YPos = 650;
@@ -517,7 +537,6 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 				
 			}
 			
-			
 			//Check Game State
 			checkGame();
 			
@@ -531,8 +550,10 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
 	    
+	    //add background
 	    g.drawImage(gameBg.getImage(), 0, 0, this.getWidth(), 530, null);
 	    
+	    //add background for health and ammo display
 	    g.setColor(boxColour);
 	    g.fillRoundRect(0, 530, 300, 170, 30, 30);
 	    g.fillRoundRect(980, 530, 300, 170, 30, 30);
@@ -572,8 +593,9 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    g.drawImage(hp1.getImage(), 10, 550, 200, 40, null);
 	    g.drawImage(hp2.getImage(), 1050, 550, 200, 40, null);
 	    
+	    //updates player health
 	    g.setColor(java.awt.Color.black);
-	    g.setFont(new Font("Arial", Font.BOLD, 50));
+	    g.setFont(new Font("Roboto Mono", Font.BOLD, 50));
 	    g.drawString(p1HP + "", 30, 650);
 	    g.drawString(p2HP + "", 1100, 650);
 	    
