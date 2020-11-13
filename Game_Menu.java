@@ -601,7 +601,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    
 	    //updates player health
 	    g.setColor(java.awt.Color.black);
-	    g.setFont(new Font("Roboto Mono", Font.BOLD, 50));
+	    g.setFont(new Font("Courier", Font.BOLD, 50));
 	    g.drawString(p1HP + "", 30, 650);
 	    g.drawString(p2HP + "", 1100, 650);
 	    
