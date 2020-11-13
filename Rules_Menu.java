@@ -73,14 +73,14 @@ public class Rules_Menu extends JPanel implements ActionListener{
 		g.setColor(textColour);
 		g.fillRoundRect(80, 120, 300, 110, 30, 30);
 		g.fillRoundRect(720, 120, 300, 110, 30, 30);
-		g.fillRoundRect(80, 270, 1050, 210, 30, 30);
+		g.fillRoundRect(80, 270, 980, 210, 30, 30);
 		
 		//Set and added Translucent Background Colour for Button
 		g.setColor(buttonColour);
 		g.fillRoundRect(90, 525, 200, 60, 30, 30);
     
 		//Sets Fonts
-		g.setFont(new Font("Arial", Font.BOLD,  18));
+		g.setFont(new Font("Courier", Font.PLAIN ,16));
 		g.setColor(java.awt.Color.white);
   
 		//Shows Player 1 Keys
@@ -101,11 +101,11 @@ public class Rules_Menu extends JPanel implements ActionListener{
   		g.drawString("Hello and Welcome to Konosuba the game!",100,300);
   		g.drawString("Our game is based off the popular anime series, Kono Subarashii, commonly known as Konosuba!",100,320);
   		g.drawString("In this 1-on-1 PvP game, you can face off with your opponents through either Megumin, or Wiz!",100,340);
-  		g.drawString("You will be able to shoot Aqua Projectiles, up to 3 at a time. Your ammo will be displayed on the bottom of the screen.",100,360);
-  		g.drawString("Your ammo will automatically reload once your Aqua Projectiles either hit an opponent or is out of sight.",100,380);
-  		g.drawString("Also, no need to worry about running out or aiming, as your projectiles will keep reloading until the round ends, and ",100,400);
-  		g.drawString("auto-shoots to whichever side of you the enemy is on", 100, 420);
-  		g.drawString("Each player has 300 health, and each projectile does 15 damage.",100,440);
+  		g.drawString("You will be able to shoot Aqua Projectiles, up to 3 at a time. Your ammo will be displayed on ",100,360);
+  		g.drawString("the bottom of the screen and will automatically reload once your Aqua Projectiles either hit an ",100,380);
+  		g.drawString("opponent or is out of sight. Also, no need to worry about running out or aiming, as your ",100,400);
+  		g.drawString("projectiles will keep reloading until the round ends, and auto-shoots to whichever side of you", 100, 420);
+  		g.drawString("the enemy is on. Each player has 300 health, and each projectile does 15 damage.",100,440);
   		g.drawString("Have fun playing!",100,460);
  
  }
