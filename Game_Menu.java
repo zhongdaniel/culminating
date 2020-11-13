@@ -557,11 +557,11 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    g.drawImage(gameBg.getImage(), 0, 0, this.getWidth(), 530, null);
 	    
 	    //add banner between health bars
-	    g.drawImage(banner.getImage(), 300, 530, 680, 170, null);
+	    g.drawImage(banner.getImage(), 270, 530, 710, 170, null);
 	    
 	    //add background for health and ammo display
 	    g.setColor(boxColour);
-	    g.fillRoundRect(0, 530, 300, 170, 30, 30);
+	    g.fillRoundRect(0, 530, 270, 170, 30, 30);
 	    g.fillRoundRect(980, 530, 300, 170, 30, 30);
 	    
 	    //Bullets
