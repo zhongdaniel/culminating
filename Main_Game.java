@@ -6,6 +6,8 @@
  * |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
  */
 import java.awt.*;
+
+import javax.sound.sampled.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
@@ -19,8 +21,8 @@ public class Main_Game extends JFrame{
 	Rules_Menu rulesP;
 	Pause_Menu pauseP;
 	static Results_Menu resultsP;
-	
 	static boolean restartGameBool;
+	static Clip currentMusic;
 	
 	//Constructor
 	public Main_Game(){
@@ -50,6 +52,8 @@ public class Main_Game extends JFrame{
 	
 	public static void main(String[] args) {
 		Main_Game f = new Main_Game();
+		
+		//Music
 		
 		//creating window
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
