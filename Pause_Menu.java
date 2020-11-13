@@ -98,7 +98,7 @@ public class Pause_Menu extends JPanel implements ActionListener, KeyListener{
 	//Draw Component
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		
+		 
 		g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
 	}
 }
