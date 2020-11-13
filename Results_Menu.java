@@ -7,7 +7,9 @@
  */
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 
+import javax.sound.sampled.*;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
@@ -54,7 +56,7 @@ public class Results_Menu extends JPanel implements ActionListener{
 		loseImg = new ImageIcon("Loser.png");
 		
 		//define the button's background colour
-		buttonColour = new Color(153, 238, 255, 150);
+		buttonColour = new Color(255, 255, 255, 100);
 		
 		//Adding Listeners
 		againButton.addActionListener(this);
@@ -77,43 +79,68 @@ public class Results_Menu extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		//determines fuctions of buttons
-		if (e.getSource() == againButton) 
+		if (e.getSource() == againButton) {
 			Main_Game.restartGameBool = true;
 			Main_Game.cardsL.show(Main_Game.c, "Game");
-     
-		if (e.getSource() == backButton) 
+			
+			//Changing Music
+			try {
+				Main_Game.currentMusic.stop();
+				Main_Game.currentMusic = AudioSystem.getClip();
+				Main_Game.currentMusic.open(AudioSystem.getAudioInputStream(new File("Game_Music.wav")));
+				Main_Game.currentMusic.start();
+			} 
+			
+			catch (Exception e1) {
+				System.out.println("Something wrong with audio.");
+			}
+		}
+		
+		if (e.getSource() == backButton) {
 			Main_Game.cardsL.show(Main_Game.c, "Home");
-
+			
+			//Changing Music
+			try {
+				Main_Game.currentMusic.stop();
+				Main_Game.currentMusic = AudioSystem.getClip();
+				Main_Game.currentMusic.open(AudioSystem.getAudioInputStream(new File("Home_Music.wav")));
+				Main_Game.currentMusic.start();
+			} 
+			
+			catch (Exception e1) {
+				System.out.println("Something wrong with audio.");
+			}
+		}
 	}
 	
-	//Draw Component    
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null); //Add Background
-			
-			g.drawImage(winImg.getImage(), 275, 140, 200, 47, null); //Add Winner Text
-			g.drawImage(loseImg.getImage(), 905, 300, 80, 25, null); //Add Loser Text
-			
-			//determines which sprite to put under winner and loser
-			if(winner == 0) { //tie, both sprites are winners
-				g.drawImage(p1.getImage(), 220, 200, 112, 180, null);
-				g.drawImage(p2.getImage(), 420, 200, 112, 180, null);
-			}
-			
-			else if(winner == 1) { //wiz wins
-				g.drawImage(p1.getImage(), 300, 200, 112, 180, null);
-				g.drawImage(p2.getImage(), 920, 320, 50, 90, null);
-			}
-			
-			else if(winner == 2) { //megumin wins
-				g.drawImage(p2.getImage(), 300, 200, 112, 180, null);
-				g.drawImage(p1.getImage(), 920, 320, 50, 90, null);
-			}
-			
-			//adds background for buttons
-			g.setColor(buttonColour);
-			g.fillRoundRect(100, 390, 260, 55, 10, 10);
-			g.fillRoundRect(100, 460, 520, 60, 10, 10);
-		}
+	//Draw Component
+	public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(bg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null); //Add Background
+        
+        g.drawImage(winImg.getImage(), 275, 140, 200, 47, null); //Add Winner Text
+        g.drawImage(loseImg.getImage(), 905, 300, 80, 25, null); //Add Loser Text
+        
+        //determines which sprite to put under winner and loser
+        if(winner == 0) { //tie, both sprites are winners
+            g.drawImage(p1.getImage(), 250, 200, 112, 180, null);
+            g.drawImage(p2.getImage(), 390, 200, 112, 180, null);
+        }
+        
+        else if(winner == 1) { //Wiz wins
+            g.drawImage(p1.getImage(), 300, 200, 112, 180, null);
+            g.drawImage(p2.getImage(), 920, 320, 50, 90, null);
+        }
+        
+        else if(winner == 2) { //Megumin wins
+            g.drawImage(p2.getImage(), 300, 200, 112, 180, null);
+            g.drawImage(p1.getImage(), 920, 320, 50, 90, null);
+        }
+        
+        //adds background for buttons
+        g.setColor(buttonColour);
+        g.fillRoundRect(100, 390, 260, 55, 10, 10);
+        g.fillRoundRect(100, 460, 520, 60, 10, 10);
+    }
 
 }
