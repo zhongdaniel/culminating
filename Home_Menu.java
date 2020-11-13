@@ -1,3 +1,11 @@
+/*|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+ * File: Home_Menu.java
+ * Date Created: Oct30th
+ * Co-Authors: Anton Qi and Daniel Zhong
+ * Desc: This file's code displays the home screen, which is opened automatically when the game is run.
+ * Two Buttons allow for the player to go either to play the game, or to read the instructions
+ * |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+ */
 import java.awt.*;
 import java.awt.event.*;
 
@@ -87,8 +95,8 @@ public class Home_Menu extends JPanel implements ActionListener{
 			
 			//Create backgrounds for the buttons
 			g.setColor(buttonColour); //set 
-			g.fillRoundRect(220, 400, 170, 90, 50, 50);
-			g.fillRoundRect(220, 500, 190, 90, 50, 50);
+			g.fillRoundRect(220, 400, 170, 90, 30, 30);
+			g.fillRoundRect(220, 500, 190, 90, 30, 30);
 			
 			
 		}
