@@ -19,7 +19,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	private int p1Projectile1XPos, p1Projectile1YPos, p2Projectile1XPos, p2Projectile1YPos;
 	private int p1Projectile2XPos, p1Projectile2YPos, p2Projectile2XPos, p2Projectile2YPos;
 	private int p1Projectile3XPos, p1Projectile3YPos, p2Projectile3XPos, p2Projectile3YPos;
-	private ImageIcon gameBg, pause, p1Sprite, p2Sprite, projectileSpriteRight, projectileSpriteLeft, hp1, hp2, gif;
+	private ImageIcon gameBg, pause, p1Sprite, p2Sprite, projectileSpriteRight, projectileSpriteLeft, hp1, hp2, banner;
 	private Image pauseImg, sizedImg;
 	private Timer myTimer;
 	private boolean aPressed, dPressed, jPressed, lPressed, p1Jumping, p2Jumping;
@@ -78,6 +78,9 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	  
 	    //importing game background
 		gameBg = new ImageIcon("gameBg.png");
+		
+		//importing banner
+		banner = new ImageIcon("Banner.png");
 		
 		//creating health box colour preset
 		boxColour = new Color(229, 146, 168, 200);
@@ -552,6 +555,9 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	    
 	    //add background
 	    g.drawImage(gameBg.getImage(), 0, 0, this.getWidth(), 530, null);
+	    
+	    //add banner between health bars
+	    g.drawImage(banner.getImage(), 300, 530, 680, 170, null);
 	    
 	    //add background for health and ammo display
 	    g.setColor(boxColour);
