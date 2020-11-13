@@ -78,7 +78,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 		this.setLayout(null);
 		
 		this.add(pauseButton);
-		this.setBackground(Color.white);
+		this.setBackground(Color.PINK);
 		
 		myTimer.start();
 		
@@ -531,7 +531,7 @@ public class Game_Menu extends JPanel implements ActionListener, KeyListener{
 	public void paintComponent(Graphics g) {
 	    super.paintComponent(g);
 	    
-	    g.drawImage(gameBg.getImage(), 0, 0, this.getWidth(), this.getHeight(), null);
+	    g.drawImage(gameBg.getImage(), 0, 0, this.getWidth(), 530, null);
 	    
 	    g.setColor(boxColour);
 	    g.fillRoundRect(0, 530, 300, 170, 30, 30);
